@@ -1,0 +1,39 @@
+.top {
+    display: flex;
+}
+.top img{
+  margin-top: 20px;
+
+}
+.h2{
+    text-align: center;
+    margin-left: 690px;
+    margin-top: 50px;
+    color: rgb(9, 163, 9);
+    font-family: Inter;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 24.2px;
+    text-align: left;
+    color: #149108;
+}
+.hr{
+  width: 1450px;
+  height: 7px;
+  
+  background-color: rgb(9, 163, 9);
+  margin-left: 120px;
+
+}
+.div200{
+    width: Fixed (96px)px;
+height: Fixed (42px)px;
+top: 29px;
+left: 61px;
+padding: 21px 32px 21px 32px;
+gap: 10px;
+border-radius: 100px 0px 0px 0px;
+opacity: 0px;
+background: #149108;
+
+}

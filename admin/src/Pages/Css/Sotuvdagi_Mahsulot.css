@@ -1,0 +1,141 @@
+.h200 {
+  width: 223px;
+  height: 104px;
+  gap: 0px;
+  opacity: 0px;
+  background: #d9d9d9;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.h100 {
+  width: 300px;
+  height: 55px;
+  border-radius: 200px;
+  background: #efff77;
+  font-size: 15px;
+  margin: 15px;
+  margin-left: -0px;
+  margin-top: -7px;
+}
+
+.h100 h2 {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 10px;
+  font-family: cursive;
+}
+button {
+  width: 300px;
+  height: 55px;
+  background: #e5d544;
+  border-radius: 200px;
+  border: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+  font-size: large;
+  
+
+}
+.buttonx {
+  width: 300px;
+  height: 55px;
+  font-size: large;
+  background: #ff7777;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  border-radius: 200px;
+  border: none;
+  margin: 10px;
+  margin-left: 1px;
+
+}
+
+.border {
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 7px 15px 7px #00000040;
+  border: 5px solid green;
+
+  width: 280px;
+  height: 291px;
+  top: 209px;
+  left: 277px;
+  gap: 0px;
+  border-radius: 20px;
+  border: 6px 0px 0px 0px;
+  opacity: 0px;
+}
+.saleproduct {
+  margin-left: 400px;
+  margin-top: -470px;
+}
+.h101 h2 {
+  text-align: center;
+  font-size: 20px;
+  padding: 15px 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: -10px;
+}
+
+.h101 {
+  width: 300px;
+  height: 55px;
+  border-radius: 200px;
+  background: #53da46;
+
+  font-size: 15px;
+  margin: 5px;
+  margin-left: -0px;
+  
+}
+
+.h200 h2 {
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 10px;
+}
+
+
+.btn1{
+    display: grid;
+}
+
+.saleproduct{
+  display: flex;
+  gap: 150px;
+  margin-top: 100px;
+}
+
+.imgone{
+  margin-top: -500px;
+  position: absolute;
+  margin-left: 240px;
+
+}
+
+.background2{
+  width: 300px;
+  height: 50px;
+  margin-top: -660px;
+  margin-left: 670px;
+  background-color: #f3f6f3;
+position: relative;
+}
+
+.background2 h2{
+  position: relative;
+  color: #149108;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 25px;
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

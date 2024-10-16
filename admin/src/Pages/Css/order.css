@@ -1,0 +1,234 @@
+.part10 {
+  margin-left: 380px;
+  margin-top: -180px;
+
+}
+
+.h201 {
+  width: 223px;
+  height: 104px;
+  gap: 0px;
+  opacity: 0px;
+  background: #d9d9d9;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.h101 {
+  width: 300px;
+  height: 55px;
+  border-radius: 200px;
+  background: #efff77;
+  font-size: 15px;
+  margin: 15px;
+  margin-left: -0px;
+  margin-top: -px;
+}
+
+.h101 h2 {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 10px;
+  font-family: cursive;
+  
+}
+button {
+  width: 300px;
+  height: 55px;
+  background: #e5d544;
+  border-radius: 200px;
+  border: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: large;
+}
+.buttonx {
+  width: 300px;
+  height: 55px;
+  font-size: large;
+  background: #ff7777;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  border-radius: 200px;
+  border: none;
+  margin: 10px;
+  margin-left: 1px;
+}
+.h102 h2 {
+  text-align: center;
+  font-size: 20px;
+  padding: 15px 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: -10px;
+}
+
+.h102 {
+  width: 300px;
+  height: 55px;
+  border-radius: 200px;
+  background: #53da46;
+
+  font-size: 15px;
+  margin: 5px;
+  margin-left: -0px;
+}
+
+.h201 h2 {
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 10px;
+}
+
+.btn2 {
+  display: grid;
+}
+
+.imgon {
+  margin-top: -480px;
+  position: absolute;
+  margin-left: 240px;
+}
+
+.imgtw {
+  transition: transform 0.3s; /* Smooth transition for the image */
+  margin-left: 350px;
+  margin-top: -650px;
+
+  position: absolute;
+}
+
+.imgtw.moved {
+  transform: translateX(250px); /* Move the image 150px to the right */
+}
+
+.border10.moved {
+  transform: translateX(250px); /* Move the border10 150px to the right */
+   z-index: 1;
+}
+
+.border10 {
+  width: 280px;
+  height: 271px;
+  top: 209px;
+  left: 277px;
+  gap: 0px;
+  border-radius: 10px;
+  border: 6px solid green;
+  box-shadow: 0px 7px 15px 7px #00000040;
+  transition: transform 0.3s; /* Smooth transition for border10 */
+  margin-top: -783px;
+  background-color: #53da46;
+  margin-left: 30px;
+  background: #C4C4C4;
+  
+
+  
+  
+}
+.border2 {
+  width: 280px;
+  height: 291px;
+  top: 209px;
+  left: 277px;
+  gap: 0px;
+  border-radius: 10px;
+  border: 6px 0px 0px 0px;
+  opacity: 0px;
+  border: 6px solid green;
+  box-shadow: 0px 7px 15px 7px #00000040;
+  position: absolute;
+  margin-left: 110px;
+  background-color: #53da46;
+  
+  z-index: 3;
+}
+
+.jonatilgan_sana{
+  width: 216px;
+  height: 38px;
+  top: 274px;
+  left: 569px;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  background: #D9D9D9;
+  border: 1px solid #000000;
+  margin-left: 39px;
+  margin-top: 40px;
+  
+}
+.sana{
+  width: 216px;
+  height: 38px;
+  top: 274px;
+  left: 569px;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;                                 
+  border: 1px solid #000000;
+  margin-left: -1px;
+  background: #C4C4C4;
+  
+  margin-top: -12px;
+  
+}
+
+
+.yetibkelgan_sana{
+  width: 216px;
+  height: 38px;
+  top: 274px;
+  left: 569px;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  background: #D9D9D9;
+  border: 1px solid #000000;
+  margin-left: 39px;
+  margin-top: 70px;
+  
+}
+.sana1{
+  width: 216px;
+  height: 38px;
+  top: 274px;
+  left: 569px;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;                                 
+  border: 1px solid #000000;
+  margin-left: -1px;
+  background: #C4C4C4;
+  
+  margin-top: -12px;
+
+}
+
+.sana_h2{
+  font-size: 13px;
+  margin-top: -12px;
+  text-align: center;
+}
+.h90{
+  margin-top: -500px;
+  width: 300px;
+  height: 50px;
+  background-color: #f5f5f5;
+  margin-left: 350px;
+  font-family: Inter;
+font-size: 20px;
+font-weight: 400;
+line-height: 24.2px;
+text-align: left;
+color: #149108;
+font-family: Inter;
+font-weight: 400;
+line-height: 24.2px;
+text-align: left;
+color: #149108;
+
+  position: relative;
+}

@@ -1,0 +1,60 @@
+.chegirmalar .chegirmadagi_mahsulotlar_yozuvi{
+ color: green;
+ font-size: 50px;
+ margin-left: 150px;
+}
+
+.chegirma button{
+    background-color: rgb(244, 57, 57);
+    border-radius: 25px;
+    padding: 13px 27px;
+    border: 0px;
+    font-size: 15px;
+    color: white;
+    margin-left: 130px;
+    margin-bottom: 20px;
+}
+.products{
+    margin-left: 270px;
+    gap: 150px;
+}
+.li22{
+    text-decoration: none;
+  margin-left: 675px;
+  margin-bottom: 200px;
+  color: black ;
+  background-color: white;
+  border: 4px solid green;
+  padding: 10px 100px;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 20px;
+
+
+}
+.hr{
+    margin-bottom: 50px;
+   
+}
+
+@media (max-width: 1024px) {
+    .chegirma{
+        margin-left: -80px;
+    }
+    .li22{
+        margin-left:350px;
+    }
+  }
+  
+
+  @media (max-width: 600px) {
+     .li22{
+        margin-left: 110px;
+     }
+     .chegirmadagi_mahsulotlar_yozuvi{
+        margin-left: 130px;
+        text-align: start;
+    
+     }
+  }
+  

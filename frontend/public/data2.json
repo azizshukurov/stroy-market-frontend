@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Sement 25kg",
+      "price": "100 ming ",
+      "discount": 2,
+      "image": "https://www.rongid.ee/pics/mix/rtm88003.jpg"
+
+    },
+    {
+      "id": 2,
+      "name": "Sement 25kg",
+      "price": "100 ming ",
+      "discount": 2,
+      "image": "https://www.rongid.ee/pics/mix/rtm88003.jpg"
+
+    },
+    {
+      "id": 3,
+      "name": "Sement 25kg",
+      "price": "100 ming",
+      "discount": 2,
+      "image": "https://www.rongid.ee/pics/mix/rtm88003.jpg"
+
+    }
+  ]
+  

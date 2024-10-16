@@ -1,0 +1,39 @@
+.link {
+    text-decoration: none; /* Chiziqni olib tashlaymiz */
+    color: rgb(0, 0, 0); /* Yashil rang */
+}
+
+.link.active {
+    background-color: rgb(255, 255, 255); /* Yashil fon */
+    padding: 5px; /* Boshqa elementlardan ajratish uchun */
+    border-radius: 5px; /* Burchaklarni yumshatish */
+}
+
+.link.active {
+    background-color: white; /* Faol havola fonini oq rangda o‘zgartiramiz */
+
+}
+
+
+/* Agar siz boshqa elementlarni boshqarayotgan bo'lsangiz */
+.r{    
+    text-decoration: none;
+    list-style-type: none;
+    border: 2px solid black;
+    color: rgb(0, 0, 0);
+    padding: 20px 50px;
+    font-size: 20px;
+    width: 200px;
+    box-shadow: 5px 5px 5px rgb(42, 41, 41);
+    margin-left: 160px; 
+    margin-bottom: 40px;
+    background-color: rgb(0, 255, 34);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    border-radius: 90px ;
+
+}
+.container_ul{
+    margin-top: 200px;
+    margin-left: 50px;
+}
