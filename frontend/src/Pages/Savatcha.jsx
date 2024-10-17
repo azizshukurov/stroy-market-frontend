@@ -34,24 +34,22 @@ function Savatcha() {
   const handlePurchase = async () => {
     setLoading(true)
 
-    // Prepare the data to send in the POST request
-    const orderData = {
-      user_id: userId,
-      products: cartItems.map((item) => ({
-        product_id: item.id,
-        count: item.count,
-      })),
-    }
-
     try {
+      console.log(cartItems)
       const userToken = localStorage.getItem('userToken')
-      const response = await fetch('http://localhost:3334/orders', {
+      const response = await fetch('https://qizildasturchi.uz/api/orders', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // Ensure the server knows the content is JSON
           authorization: `Bearer ${userToken}`,
         },
-        body: JSON.stringify(orderData),
+        body: JSON.stringify({
+          user_id: userId,
+          products: cartItems.map((item) => ({
+            product_id: item.id,
+            count: item.count,
+          })),
+        }),
       })
       console.log(response)
       const result = await response.json()

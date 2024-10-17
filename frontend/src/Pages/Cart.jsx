@@ -17,7 +17,7 @@ function Cart() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3334/products') // Replace this with your actual API endpoint
+        const response = await fetch('https://qizildasturchi.uz/api/products') // Replace this with your actual API endpoint
         if (!response.ok) {
           throw new Error('Network response was not ok')
         }
@@ -61,13 +61,13 @@ function Cart() {
             </div>
             <div className="t">
               <h2>
-                {product.name} <br /> Narxi {product.price.toLocaleString()}{' '}
+                {product.name} <br /> Narxi {product.price?.toLocaleString()}{' '}
                 so'm
               </h2>
               <img className="carticon" src={cartIcon} alt="Cart Icon" />
               <div className="button1">
                 <button onClick={handleCartIconClick}>
-                  {product.price.toLocaleString()} So'm
+                  {product.price?.toLocaleString()} So'm
                 </button>
               </div>
             </div>

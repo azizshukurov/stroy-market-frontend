@@ -16,6 +16,8 @@ import Yetkazibberish from './Pages/Yetkazib_Berish'
 import Mahsulotlar from './Pages/Mahsulotlar'
 import Hisobim from './Pages/Hisobim'
 
+console.log(process.env.URL)
+
 function App() {
   return (
     <div>

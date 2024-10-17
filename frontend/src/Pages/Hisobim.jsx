@@ -20,7 +20,7 @@ function Hisobim() {
     try {
       // Attempt to register the user
       const registerResponse = await fetch(
-        'http://localhost:3334/auth/register',
+        'https://qizildasturchi.uz/api/auth/register',
         {
           method: 'POST',
           headers: {
@@ -39,11 +39,11 @@ function Hisobim() {
         const registerData = await registerResponse.json()
         console.log(registerData)
         alert("Ro'yxatdan o'tish muvaffaqiyatli!")
-        localStorage.setItem('userToken', registerData.token)
+        localStorage.setItem('userToken', registerData.data.token)
         localStorage.setItem('userId', registerData.data.id)
       } else if (registerResponse.status === 400) {
         // Bad Request (user already exists), try login
-        const loginResponse = await fetch('http://localhost:3334/auth/login', {
+        const loginResponse = await fetch('https://qizildasturchi.uz/api/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
