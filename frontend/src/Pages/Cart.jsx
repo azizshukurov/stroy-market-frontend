@@ -52,11 +52,11 @@ function Cart() {
       <div className="products">
         {products.map((product) => (
           <div className="product1" key={product.id}>
-            <div className="box1">
+            <div className="border">
               <img
-                className="kamaz"
-                src={product.image || kamaz}
-                alt={product.name}
+                src={product.image}
+                alt=""
+                style={{ width: '280px', height: '300px' }}
               />
             </div>
             <div className="t">
