@@ -15,7 +15,10 @@ function SotuvdagiMahsulot() {
     // Fetch all products when the component mounts
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3334/products')
+        const response = await axios.get(
+          'https://qizildasturchi.uz/api/products'
+        )
+        console.log(response.data.data.records)
         setProducts(response.data.data.records) // Set the fetched products
         setLoading(false)
       } catch (error) {
@@ -30,11 +33,14 @@ function SotuvdagiMahsulot() {
     const fetchOrderData = async () => {
       try {
         const token = localStorage.getItem('userToken')
-        const response = await fetch('http://localhost:3334/admin/orders', {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
+        const response = await fetch(
+          'https://qizildasturchi.uz/api/admin/orders',
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
         const result = await response.json()
         if (result.success) {
           setOrderData(result.data.records) // Assuming you want to display the first order
@@ -62,7 +68,7 @@ function SotuvdagiMahsulot() {
 
     const updatedProductData = {
       name: selectedProduct.name,
-      price: selectedProduct.price,
+      price: parseInt(selectedProduct.price),
       count: parseInt(selectedProduct.count),
     }
 
@@ -71,7 +77,7 @@ function SotuvdagiMahsulot() {
     try {
       const token = localStorage.getItem('userToken')
       await axios.put(
-        `http://localhost:3334/admin/products/${selectedProduct.id}`,
+        `https://qizildasturchi.uz/api/admin/products/${selectedProduct.id}`,
         updatedProductData,
         {
           headers: {
@@ -82,7 +88,7 @@ function SotuvdagiMahsulot() {
       alert('Product updated successfully')
       setIsModalOpen(false)
       // Refetch the products to see the updated list
-      const response = await axios.get('http://localhost:3334/products')
+      const response = await axios.get('https://qizildasturchi.uz/api/products')
       setProducts(response.data.data.records)
     } catch (error) {
       console.error('Error updating product:', error)
@@ -93,14 +99,17 @@ function SotuvdagiMahsulot() {
   const handleDelete = async (productId) => {
     try {
       const token = localStorage.getItem('userToken')
-      await axios.delete(`http://localhost:3334/admin/products/${productId}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
+      await axios.delete(
+        `https://qizildasturchi.uz/api/admin/products/${productId}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
       alert('Product deleted successfully')
 
-      const response = await axios.get('http://localhost:3334/products')
+      const response = await axios.get('https://qizildasturchi.uz/api/products')
       setProducts(response.data.data.records)
     } catch (error) {
       console.error('Error deleting product:', error)

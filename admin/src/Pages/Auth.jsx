@@ -9,7 +9,7 @@ function Auth() {
   // Handle form submission
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3334/admin/login', {
+      const response = await axios.post('https://qizildasturchi.uz/api/admin/login', {
         login: phoneNumber,
         password: code,
       })

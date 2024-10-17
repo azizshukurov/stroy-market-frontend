@@ -24,7 +24,7 @@ function MahsulotQoshish() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:3334/categories') // Replace with your endpoint
+        const response = await axios.get('https://qizildasturchi.uz/api/categories') // Replace with your endpoint
         console.log('Fetched Categories:', response.data) // Check if categories are fetched
         setCategories(response.data.data) // Set categories from backend
       } catch (err) {
@@ -74,7 +74,7 @@ function MahsulotQoshish() {
       imageFormData.append('file', imageFile) // Append the image file
 
       const imageResponse = await axios.post(
-        'http://localhost:3334/upload',
+        'https://qizildasturchi.uz/api/upload',
         imageFormData,
         {
           headers: {
@@ -97,7 +97,7 @@ function MahsulotQoshish() {
       }
 
       const response = await axios.post(
-        'http://localhost:3334/admin/products', // Your API endpoint for creating orders
+        'https://qizildasturchi.uz/api/admin/products', // Your API endpoint for creating orders
         orderData,
         {
           headers: {

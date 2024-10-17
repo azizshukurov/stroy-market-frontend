@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Admin from './Components/Admin/Admin'
 import Login from './Pages/Login/Login'
-import Auth from './Pages/auth'
+import Auth from './Pages/Auth'
 import AddAdmin from './Pages/AddAdmin'
 import MahsulotQoshish from './Pages/MahsulotQoshish'
 import SotuvdagiMahsulot from './Pages/SotuvdagiMahsulot'

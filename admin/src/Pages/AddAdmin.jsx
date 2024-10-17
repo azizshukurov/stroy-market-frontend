@@ -13,7 +13,7 @@ function AddAdmin() {
     const fetchAdmins = async () => {
       try {
         const token = localStorage.getItem('userToken')
-        const response = await axios.get('http://localhost:3334/admin', {
+        const response = await axios.get('https://qizildasturchi.uz/api/admin', {
           headers: {
             authorization: `Bearer ${token}`,
           },

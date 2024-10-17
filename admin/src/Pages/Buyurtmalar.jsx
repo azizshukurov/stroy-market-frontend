@@ -11,7 +11,7 @@ function Buyurtmalar() {
     try {
       const token = localStorage.getItem('userToken')
       const response = await fetch(
-        `http://localhost:3334/admin/orders/status/${id}`,
+        `https://qizildasturchi.uz/api/admin/orders/status/${id}`,
         {
           method: 'PUT',
           headers: {
@@ -21,8 +21,6 @@ function Buyurtmalar() {
           body: JSON.stringify({ status: 3 }), // sending 'sent' as the updated status
         }
       )
-
-      console.log(response)
 
       if (!response.ok) {
         throw new Error('Failed to update order status')
@@ -43,11 +41,15 @@ function Buyurtmalar() {
     const fetchOrderData = async () => {
       try {
         const token = localStorage.getItem('userToken')
-        const response = await fetch('http://localhost:3334/admin/orders', {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
+        const response = await fetch(
+          'https://qizildasturchi.uz/api/admin/orders',
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        console.log(response);
         const result = await response.json()
         if (result.success) {
           setOrderData(result.data.records) // Assuming you want to display the first order
@@ -184,7 +186,7 @@ function Buyurtmalar() {
                     marginBottom: '8px',
                   }}
                 >
-                  Narxi: {product.price.toLocaleString()} so'm
+                  Narxi: {product.price?.toLocaleString()} so'm
                 </p>
                 <p
                   style={{
