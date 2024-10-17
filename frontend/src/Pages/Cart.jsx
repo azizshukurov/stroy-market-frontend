@@ -35,7 +35,7 @@ function Cart() {
 
   if (loading) return <div>Yuklanmoqda...</div>
   if (error) return <div>Xato: {error}</div>
-
+  console.log(products)
   return (
     <div className="Cart">
       <div className="search">
