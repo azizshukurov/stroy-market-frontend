@@ -9,10 +9,13 @@ function Auth() {
   // Handle form submission
   const handleLogin = async () => {
     try {
-      const response = await axios.post('https://qizildasturchi.uz/api/admin/login', {
-        login: phoneNumber,
-        password: code,
-      })
+      const response = await axios.post(
+        'https://qizildasturchi.uz/api/admin/login',
+        {
+          login: phoneNumber,
+          password: code,
+        }
+      )
 
       if (response.status === 200) {
         const { token } = response.data.data // Assuming the backend returns a token
@@ -21,7 +24,7 @@ function Auth() {
       }
     } catch (error) {
       // Handle error response
-      setError('Login failed. Please check your credentials.')
+      setError('Admin topilmadi yoki login va parol xato kiritildi.')
     }
   }
 

@@ -35,8 +35,15 @@ function Savatcha() {
     setLoading(true)
 
     try {
-      console.log(cartItems)
+      const orderData = cartItems.map((item) => ({
+        product_id: item.id,
+        count: item.count,
+      }))
       const userToken = localStorage.getItem('userToken')
+      const userId = localStorage.getItem('userId')
+      console.log(userId)
+      console.log(orderData)
+      console.log(userToken)
       const response = await fetch('https://qizildasturchi.uz/api/orders', {
         method: 'POST',
         headers: {
@@ -45,13 +52,10 @@ function Savatcha() {
         },
         body: JSON.stringify({
           user_id: userId,
-          products: cartItems.map((item) => ({
-            product_id: item.id,
-            count: item.count,
-          })),
+          products: orderData,
         }),
       })
-      console.log(response)
+      console.log(response.data)
       const result = await response.json()
       if (result.success) {
         // If the order is successful, clear the cart and redirect to the orders page

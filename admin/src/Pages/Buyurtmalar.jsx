@@ -49,7 +49,7 @@ function Buyurtmalar() {
             },
           }
         )
-        console.log(response);
+        console.log(response)
         const result = await response.json()
         if (result.success) {
           setOrderData(result.data.records) // Assuming you want to display the first order
@@ -127,98 +127,94 @@ function Buyurtmalar() {
   const buttonHoverStyle = {
     backgroundColor: '#45a049',
   }
-
+  console.log(orderData)
   return (
     <div
+      className="productlist"
       style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '20px',
-        justifyContent: 'space-between',
+        position: 'relative',
+        left: '-700px',
       }}
     >
-      {orderData.map((order, orderIndex) => {
-        const products = order.products
+      <div className="background2">
+        <div className="saleproduct">
+          {orderData.map((order, orderIndex) => {
+            const products = order.products
 
-        return products.map((productWrapper, productIndex) => {
-          const product = productWrapper.product
-
-          return (
-            <div
-              style={{
-                border: '1px solid #ddd',
-                padding: '16px',
-                borderRadius: '8px',
-                backgroundColor: '#fff',
-                width: '250px',
-                boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-              }}
-              key={`${orderIndex}-${productIndex}`}
-            >
-              {/* Product Image */}
-              <div className="product-image">
-                <img
-                  src={product.image ? product.image : '/default-image.jpg'}
-                  alt={product.name}
+            return products.map((item, productIndex) => {
+              const product = item.product
+              return (
+                <div
                   style={{
-                    maxWidth: '100%',
-                    height: '150px',
-                    objectFit: 'cover',
+                    border: '1px solid #ddd',
+                    padding: '16px',
                     borderRadius: '8px',
-                    marginBottom: '12px',
+                    backgroundColor: '#fff',
+                    width: '250px',
+                    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
                   }}
-                />
-              </div>
+                  key={`${orderIndex}-${productIndex}`}
+                >
+                  {/* Product Image */}
+                  <div className="border">
+                    <img
+                      src={`https://qizildasturchi.uz/image/${product.image}`}
+                      alt=""
+                      style={{ width: '280px', height: '300px' }}
+                    />
+                  </div>
 
-              {/* Product Info */}
-              <div style={{ width: '100%' }}>
-                <h3 style={{ fontSize: '1.2em', marginBottom: '8px' }}>
-                  {product.name}
-                </h3>
-                <p
-                  style={{
-                    fontSize: '1.1em',
-                    color: '#333',
-                    marginBottom: '8px',
-                  }}
-                >
-                  Narxi: {product.price?.toLocaleString()} so'm
-                </p>
-                <p
-                  style={{
-                    fontSize: '1em',
-                    color: '#777',
-                    marginBottom: '12px',
-                  }}
-                >
-                  Qolgan: {product.count} ta
-                </p>
+                  {/* Product Info */}
+                  <div style={{ width: '100%' }}>
+                    <h3 style={{ fontSize: '1.2em', marginBottom: '8px' }}>
+                      {product.name}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: '1.1em',
+                        color: '#333',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      Narxi: {product.price?.toLocaleString()} so'm
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '1em',
+                        color: '#777',
+                        marginBottom: '12px',
+                      }}
+                    >
+                      Qolgan: {product.count} ta
+                    </p>
 
-                {/* Send Button */}
-                <button
-                  style={{
-                    padding: '8px 16px',
-                    backgroundColor: '#4caf50',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s ease',
-                  }}
-                  onClick={() => handleSend(order.id)} // Clicking will trigger the PUT request
-                  disabled={loading}
-                >
-                  {loading ? 'Yuklanmoqda...' : 'Jonatish'}
-                </button>
-              </div>
-            </div>
-          )
-        })
-      })}
+                    {/* Send Button */}
+                    <button
+                      style={{
+                        padding: '8px 16px',
+                        backgroundColor: '#4caf50',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.3s ease',
+                      }}
+                      onClick={() => handleSend(order.id)} // Clicking will trigger the PUT request
+                      disabled={loading}
+                    >
+                      {loading ? 'Yuklanmoqda...' : 'Jonatish'}
+                    </button>
+                  </div>
+                </div>
+              )
+            })
+          })}
+        </div>
+      </div>
     </div>
   )
 }

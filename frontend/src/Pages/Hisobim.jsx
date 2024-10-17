@@ -39,23 +39,29 @@ function Hisobim() {
         const registerData = await registerResponse.json()
         console.log(registerData)
         alert("Ro'yxatdan o'tish muvaffaqiyatli!")
+        window.location.href = '/bosh-sahifa'
+        console.log(registerData.data)
         localStorage.setItem('userToken', registerData.data.token)
-        localStorage.setItem('userId', registerData.data.id)
+        localStorage.setItem('userId', registerData.data.data.id)
       } else if (registerResponse.status === 400) {
         // Bad Request (user already exists), try login
-        const loginResponse = await fetch('https://qizildasturchi.uz/api/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ phone_number: phoneNumber, password }),
-        })
+        const loginResponse = await fetch(
+          'https://qizildasturchi.uz/api/auth/login',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ phone_number: phoneNumber, password }),
+          }
+        )
 
         const loginData = await loginResponse.json()
         console.log(loginData.data.token)
         if (loginData.success) {
           // Successfully logged in, handle the token
           alert('Tizimga kirish muvaffaqiyatli!')
+          window.location.href = '/bosh-sahifa'
           localStorage.setItem('userToken', loginData.data.token) // Store token if login is successful
           localStorage.setItem('userId', loginData.data.data.id) // Store token if login is successful
         } else {
@@ -66,7 +72,9 @@ function Hisobim() {
       }
     } catch (error) {
       console.error('Error:', error)
-      setErrorMessage("Tarmoq xatosi! Iltimos, qaytadan urinib ko'ring.")
+      setErrorMessage(
+        "Xato ma'lumot kiritildi! Iltimos boshidan urinib ko'ring"
+      )
     }
   }
 
@@ -78,14 +86,14 @@ function Hisobim() {
           <input
             className="input"
             type="text"
-            placeholder="Ismingizni kiriting"
+            placeholder="Ismingizni kiriting: John"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
           <input
             className="input"
             type="text"
-            placeholder="Telefon raqamingizni kiriting"
+            placeholder="Telefon raqamingizni: 901112233"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
