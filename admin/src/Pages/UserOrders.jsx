@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './CSS/UserOrders.css' // Create a CSS file for styling
+import './Css/UserOrders.css' // Create a CSS file for styling
 
 const UserOrders = () => {
   const [orders, setOrders] = useState([])
