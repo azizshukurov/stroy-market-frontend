@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import './Css/Mahsulot.css'
 
@@ -20,11 +20,14 @@ function MahsulotQoshish() {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [imagePreview, setImagePreview] = useState(null) // To display image preview
   const [imageFile, setImageFile] = useState(null) // Store the image file
+  const fileInputRef = useRef(null) // Reference to the file input
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('https://qizildasturchi.uz/api/categories') // Replace with your endpoint
+        const response = await axios.get(
+          'https://qizildasturchi.uz/api/categories'
+        ) // Replace with your endpoint
         console.log('Fetched Categories:', response.data) // Check if categories are fetched
         setCategories(response.data.data) // Set categories from backend
       } catch (err) {
@@ -33,12 +36,6 @@ function MahsulotQoshish() {
     }
     fetchCategories()
   }, [])
-
-  const handleClick = () => {
-    // Add new product to the list and shift the image to the right
-    setDisplayedProducts((prevProducts) => [...prevProducts, productTemplate])
-    setPosition((prevPosition) => prevPosition + 200) // Move the image to the right by 200px
-  }
 
   // Handle input changes for product details
   const handleInputChange = (e, index) => {
@@ -66,6 +63,11 @@ function MahsulotQoshish() {
     }
   }
 
+  // Handle image click to open file input
+  const handleImageClick = () => {
+    fileInputRef.current.click() // Programmatically trigger file input click
+  }
+
   // Send POST request to create a new product
   const handleCreateProduct = async (index) => {
     try {
@@ -86,9 +88,8 @@ function MahsulotQoshish() {
       const uploadedImageUrl = imageResponse.data.data // Get the uploaded image URL
       console.log(uploadedImageUrl)
 
-      // Step 2: Create the order with the uploaded image URL
-      // Get token from localStorage
-      const orderData = {
+      // Step 2: Create the product with the uploaded image URL
+      const productDataWithImage = {
         name: productData.name,
         category_id: selectedCategory,
         count: parseInt(productData.count, 10),
@@ -97,15 +98,15 @@ function MahsulotQoshish() {
       }
 
       const response = await axios.post(
-        'https://qizildasturchi.uz/api/admin/products', // Your API endpoint for creating orders
-        orderData,
+        'https://qizildasturchi.uz/api/admin/products',
+        productDataWithImage,
         {
           headers: {
             authorization: `Bearer ${token}`,
           },
         }
       )
-      console.log('Order created:', response.data)
+      console.log('Product created:', response.data)
       alert('Product created successfully!')
     } catch (error) {
       console.error('Error creating product:', error)
@@ -119,19 +120,6 @@ function MahsulotQoshish() {
         <h2>Mahsulot qo'shish</h2>
       </div>
 
-      {/* Add product image (clickable to add more products) */}
-      <img
-        src="https://static-00.iconduck.com/assets.00/add-ring-light-icon-2048x2046-uap7tigb.png"
-        alt="Add Product"
-        onClick={handleClick}
-        style={{
-          cursor: 'pointer',
-          transform: `translateX(${position}px)`, // Move image right on each click
-          transition: 'transform 0.3s ease',
-        }}
-      />
-
-      {/* List of added products with input fields */}
       <div className="messages">
         {displayedProducts.map((_, index) => (
           <div key={index} className="product">
@@ -141,8 +129,17 @@ function MahsulotQoshish() {
                 'https://static-00.iconduck.com/assets.00/add-square-light-icon-2048x2048-2pm9jm5u.png'
               }
               alt="Product"
+              onClick={handleImageClick} // Open file dialog on image click
+              style={{ cursor: 'pointer' }} // Add pointer cursor to indicate clickability
             />
-            <input type="file" accept="image/*" onChange={handleImageChange} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              ref={fileInputRef}
+              style={{ display: 'none' }} // Hide the actual file input
+            />
+
             {/* Input fields for each product */}
             <input
               className="input1"
@@ -154,9 +151,7 @@ function MahsulotQoshish() {
             />
             <select
               className="input2"
-              onChange={(e) => {
-                setSelectedCategory(e.target.value)
-              }}
+              onChange={(e) => setSelectedCategory(e.target.value)}
               value={selectedCategory}
             >
               <option value="">Kategoryani tanlang</option>
@@ -183,8 +178,6 @@ function MahsulotQoshish() {
               value={productData.price}
               onChange={(e) => handleInputChange(e, index)}
             />
-
-            {/* Image upload */}
 
             <button
               className="button100"

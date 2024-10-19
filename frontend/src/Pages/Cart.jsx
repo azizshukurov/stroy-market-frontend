@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Css/Cart.css'
 import cartIcon from '../Components/Rasmlar/360_F_560176615_cUua21qgzxDiLiiyiVGYjUnLSGnVLIi6.jpg'
-import kamaz from '../Components/Rasmlar/kamaz.jpg'
 
 function Cart() {
   const navigate = useNavigate()
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-
-  const handleCartIconClick = () => {
-    navigate('/cart')
-  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,9 +28,35 @@ function Cart() {
     fetchProducts()
   }, [])
 
+  // Handle the cart icon click event
+  const handleCartClick = (product) => {
+    // Retrieve the current cart from local storage
+    const currentCart = JSON.parse(localStorage.getItem('cart')) || []
+
+    // Check if the product already exists in the cart
+    const existingProduct = currentCart.find((item) => item.id === product.id)
+    let updatedCart
+
+    if (existingProduct) {
+      // If the product already exists, increase its count
+      updatedCart = currentCart.map((item) =>
+        item.id === product.id ? { ...item, count: item.count + 1 } : item
+      )
+    } else {
+      // If it's a new product, add it to the cart with a count of 1
+      updatedCart = [...currentCart, { ...product, count: 1 }]
+    }
+
+    // Save the updated cart to local storage
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+
+    // Navigate to the cart page
+    navigate('/savatcha')
+  }
+
   if (loading) return <div>Yuklanmoqda...</div>
   if (error) return <div>Xato: {error}</div>
-  console.log(products)
+
   return (
     <div className="Cart">
       <div className="search">
@@ -55,7 +76,7 @@ function Cart() {
             <div className="border">
               <img
                 src={product.image}
-                alt=""
+                alt={product.name}
                 style={{ width: '280px', height: '300px' }}
               />
             </div>
@@ -64,12 +85,16 @@ function Cart() {
                 {product.name} <br /> Narxi {product.price?.toLocaleString()}{' '}
                 so'm
               </h2>
-              <img className="carticon" src={cartIcon} alt="Cart Icon" />
-              <div className="button1">
-                <button onClick={handleCartIconClick}>
-                  {product.price?.toLocaleString()} So'm
-                </button>
-              </div>
+              <img
+                className="carticon"
+                src={cartIcon}
+                alt="Cart Icon"
+                onClick={() => handleCartClick(product)} // Pass the product to the handler
+                style={{ cursor: 'pointer' }}
+              />
+              {/* <div className="button1">
+                <button>{product.price?.toLocaleString()} So'm</button>
+              </div> */}
             </div>
           </div>
         ))}

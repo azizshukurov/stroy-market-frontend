@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Admin from './Components/Admin/Admin'
 import Login from './Pages/Login/Login'
 import Auth from './Pages/Auth'
@@ -6,6 +6,7 @@ import AddAdmin from './Pages/AddAdmin'
 import MahsulotQoshish from './Pages/MahsulotQoshish'
 import SotuvdagiMahsulot from './Pages/SotuvdagiMahsulot'
 import Buyurtmalar from './Pages/Buyurtmalar'
+import UserOrders from './Pages/UserOrders'
 
 function App() {
   // Get the userToken from localStorage or context
@@ -25,7 +26,8 @@ function App() {
             <Route path="/link2" element={<AddAdmin />} />
             <Route path="/link3" element={<MahsulotQoshish />} />
             <Route path="/link4" element={<SotuvdagiMahsulot />} />
-            <Route path="/link5" element={<Buyurtmalar />} />
+            {/* <Route path="/link5" element={<Buyurtmalar />} /> */}
+            <Route path="/link5" element={<UserOrders />} />
           </>
         )}
       </Routes>

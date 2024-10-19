@@ -1,35 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom' // useNavigate for redirection
+import { useNavigate } from 'react-router-dom'
 import './Css/Savatcha.css'
 
 function Savatcha() {
   const [cartItems, setCartItems] = useState([])
-  const [userId, setUserId] = useState('')
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate() // Use useNavigate for navigation
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // Retrieve the user token from localStorage or session
+    // Retrieve the user token and userId from localStorage or session
     const userToken = localStorage.getItem('userToken')
+    const userId = localStorage.getItem('userId')
 
-    // If the userToken is false or not available, redirect to '/hisobim'
-    if (!userToken) {
+    // If the userToken or userId is not available, redirect to '/hisobim'
+    if (!userToken || !userId) {
       navigate('/hisobim')
-    } else {
-      // Optionally, set userId if needed
-      const savedUserId = localStorage.getItem('userId')
-      const savedUserToken = localStorage.getItem('userToken')
-      if (savedUserId) {
-        setUserId(savedUserId)
-      }
     }
 
-    // Retrieve cart data from localStorage
+    // Retrieve cart data from localStorage and set it to the state
     const savedCart = localStorage.getItem('cart')
     if (savedCart) {
       setCartItems(JSON.parse(savedCart))
     }
-  }, [navigate]) // Dependency on navigate to trigger redirection
+  }, [navigate])
 
   const handlePurchase = async () => {
     setLoading(true)
@@ -41,13 +34,11 @@ function Savatcha() {
       }))
       const userToken = localStorage.getItem('userToken')
       const userId = localStorage.getItem('userId')
-      console.log(userId)
-      console.log(orderData)
-      console.log(userToken)
+
       const response = await fetch('https://qizildasturchi.uz/api/orders', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json', // Ensure the server knows the content is JSON
+          'Content-Type': 'application/json',
           authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify({
@@ -55,16 +46,16 @@ function Savatcha() {
           products: orderData,
         }),
       })
-      console.log(response.data)
+
       const result = await response.json()
       if (result.success) {
         // If the order is successful, clear the cart and redirect to the orders page
         localStorage.removeItem('cart')
         setCartItems([])
         alert('Sotib olish muvaffaqiyatli amalga oshirildi!')
-        navigate('/orders') // Navigate to /orders page after successful order
+        navigate('/orders')
       } else {
-        alert('Sotib olishda xato yuz berdi!')
+        alert(result.message || 'Sotib olishda xato yuz berdi!')
       }
     } catch (error) {
       console.error('Error placing order:', error)
@@ -74,23 +65,67 @@ function Savatcha() {
     }
   }
 
+  const updateCart = (id, newCount) => {
+    // Update cart count or remove item if count is 0
+    const updatedCart = cartItems
+      .map((item) => (item.id === id ? { ...item, count: newCount } : item))
+      .filter((item) => item.count > 0) // Remove items with count 0
+    setCartItems(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart)) // Update localStorage
+  }
+
+  const increaseCount = (id) => {
+    const item = cartItems.find((item) => item.id === id)
+    if (item) {
+      updateCart(id, item.count + 1) // Increase count by 1
+    }
+  }
+
+  const decreaseCount = (id) => {
+    const item = cartItems.find((item) => item.id === id)
+    if (item && item.count > 1) {
+      updateCart(id, item.count - 1) // Decrease count by 1
+    } else if (item) {
+      // Remove item if count goes to 0
+      updateCart(id, 0)
+    }
+  }
+  console.log(cartItems)
   return (
-    <div>
+    <div className="savatcha-container">
       <h2>Savatcha</h2>
       {cartItems.length === 0 ? (
         <p>Savatchangiz bo'sh.</p>
       ) : (
-        <ul>
+        <ul className="cart-list">
           {cartItems.map((item) => (
-            <li key={item.id}>
-              {item.name} - {item.count} dona - {item.price * item.count} so'm
+            <li key={item.id} className="cart-item">
+              <img
+                src={`https://qizildasturchi.uz/image${item.image}`}
+                alt={item.name}
+                className="cart-item-image"
+              />
+
+              <div className="cart-item-details">
+                <span className="cart-item-name">{item.name}</span> {'  '}
+                {item.count} dona - {item.price * item.count} so'm
+              </div>
+              <button onClick={() => decreaseCount(item.id)}>-</button>
+              <button onClick={() => increaseCount(item.id)}>+</button>
             </li>
           ))}
         </ul>
       )}
-      <button onClick={handlePurchase} disabled={loading}>
-        {loading ? 'Yuborilmoqda...' : 'Sotib olish'}
-      </button>
+
+      {cartItems.length === 0 ? (
+        <button onClick={() => navigate('/bosh-sahifa')}>
+          Bosh sahifaga qaytish!
+        </button>
+      ) : (
+        <button onClick={handlePurchase} disabled={loading}>
+          {loading ? 'Yuborilmoqda...' : 'Sotib olish'}
+        </button>
+      )}
     </div>
   )
 }

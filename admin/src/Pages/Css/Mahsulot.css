@@ -1,37 +1,34 @@
-.background1{
-    width: 200px;
-    height: 50px;
-    background-color: rgb(247, 246, 246);
-    margin-top: -650px;
-    margin-left: 700px;
-    position: relative;
+.background1 {
+  width: 200px;
+  height: 50px;
+  background-color: rgb(247, 246, 246);
+  margin-top: -650px;
+  margin-left: 700px;
+  position: relative;
 }
-.MahsulotQoshish img{
-    width: 100px;
-    height: 100px;
-    margin-top: 300px;
-    margin-left: 720px;
+.MahsulotQoshish img {
+  width: 100px;
+  height: 100px;
 }
-.MahsulotQoshish h2{
-    width: 413px;
-height: 24px;
-top: 54px;
-left: 658px;
-gap: 0px;
-opacity: 0px;
-color: #149108;
-margin-left: -635px;
-margin-top: -55px;
-position: absolute;
-word-spacing: 5px;
-margin-left: -690px;
-font-family: Inter;
-font-size: 27px;
-font-weight: 400;
-line-height: 24.2px;
-text-align: left;
-color: #149108;
-
+.MahsulotQoshish h2 {
+  width: 413px;
+  height: 24px;
+  top: 54px;
+  left: 658px;
+  gap: 0px;
+  opacity: 0px;
+  color: #149108;
+  margin-left: -635px;
+  margin-top: -55px;
+  position: absolute;
+  word-spacing: 5px;
+  margin-left: -690px;
+  font-family: Inter;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: #149108;
 }
 
 .MahsulotQoshish {
@@ -40,24 +37,23 @@ color: #149108;
 }
 
 .messages {
-  display: flex; /* Flexbox yordamida yonma-yon joylash */
-  justify-content: flex-start; /* Chapga joylash */
-  margin-top: -240px; /* Yuqoridan joy berish */
+  display: flex; 
+  justify-content: flex-start;
+  margin-top: 50px;
   margin-left: 310px;
-  
 }
 
 .product {
   width: 280px;
-height: 291px;
-top: 209px;
-left: 279px;
-gap: 0px;
-border-radius: 10px 0px 0px 0px;
-border: 6px 0px 0px 0px;
-opacity: 0px;
+  height: 291px;
+  top: 209px;
+  left: 279px;
+  gap: 0px;
+  border-radius: 10px 0px 0px 0px;
+  border: 6px 0px 0px 0px;
+  opacity: 0px;
 
-background: #C4C4C4;
+  background: #c4c4c4;
 
   border: 1px solid #ccc; /* Chiziq */
   border-radius: 8px; /* Burchaklarni yumshatish */
@@ -65,75 +61,68 @@ background: #C4C4C4;
   padding: 10px; /* Ichki joy */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soyali effekt */
   border: 6px solid green;
-
-
-
 }
 
-.product img{
+.product img {
   margin-left: 90px;
   margin-top: 90px;
-
 }
-.messages .input1{
+.messages .input1 {
   margin-top: 120px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   padding: 30px 65px;
   margin-left: -11px;
   border: 0px;
 }
-.messages .input1::placeholder{
+.messages .input1::placeholder {
   color: black;
   font-size: 18px;
-   text-align: start;
-  
+  text-align: start;
 }
 .messages .input2 {
- width: 280px;
- border-radius: 200px;
- border: 0px;
- background: #EFFF77;
+  width: 280px;
+  border-radius: 200px;
+  border: 0px;
+  background: #efff77;
 
- padding: 15px 10px;
- margin-top: 10px;
- margin-left: -11px;
-
+  padding: 15px 10px;
+  margin-top: 10px;
+  margin-left: -11px;
 }
 
-.messages .input2::placeholder{
+.messages .input2::placeholder {
   text-align: center;
   color: black;
   font-size: 16px;
+}
+.messages .button100 {
+  width: 300px;
+  border-radius: 200px;
+  border: 0px;
+  background: #efff77;
 
-}
-.messages .button100{
-  width: 300px;
-  border-radius: 200px;
-  border: 0px;
-  background: #EFFF77;
- 
   padding: 15px 10px;
   margin-top: 10px;
   margin-left: -11px;
-  background: #53DA46;
+  background: #53da46;
   font-size: 16px;
 }
-.messages .button101{
+.messages .button101 {
   width: 300px;
   border-radius: 200px;
   border: 0px;
-  background: #EFFF77;
- 
+  background: #efff77;
+
   padding: 15px 10px;
   margin-top: 10px;
   margin-left: -11px;
-  background: #FF7777;
+  background: #ff7777;
   font-size: 16px;
 }
-.hr1{
+.hr1 {
   width: 1450px;
   height: 7px;
-  
+
   background-color: rgb(9, 163, 9);
   margin-left: 120px;
   margin-top: 600px;

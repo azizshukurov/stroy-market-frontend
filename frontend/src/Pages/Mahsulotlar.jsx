@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Css/Mahsulotlar.css'
 
 function Mahsulotlar() {
+  const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(null)
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
@@ -50,11 +51,13 @@ function Mahsulotlar() {
         console.log(updatedCart)
         // Save updated cart to localStorage
         localStorage.setItem('cart', JSON.stringify(updatedCart))
+        navigate('/savatcha')
         return updatedCart
       } else {
         const updatedCart = [...prevCart, { ...product, count: 1 }]
         // Save updated cart to localStorage
         localStorage.setItem('cart', JSON.stringify(updatedCart))
+        navigate('/savatcha')
         return updatedCart
       }
     })
@@ -84,8 +87,12 @@ function Mahsulotlar() {
               <h2>{product.name}</h2>
               <p>Narxi: {product.price.toLocaleString()} so'm</p>
               <p>Qolgan: {product.count} ta</p>
-              <button onClick={() => handleAddToCart(product)}>
-                Buyurtma qilish
+
+              <button
+                className="button1"
+                onClick={() => handleAddToCart(product)}
+              >
+                Savatga qo'shish
               </button>
             </div>
           ))}
@@ -94,7 +101,6 @@ function Mahsulotlar() {
 
       <div className="hr5"></div>
 
-      {/* Link to Cart Page */}
       <Link to={{ pathname: '/savatcha', state: cart }} className="li2">
         Savatchaga o’tish
       </Link>
