@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import logo from '../Rasmlar/logo.jpg'
@@ -59,6 +59,14 @@ const Navbar = () => {
         >
           <Link to="/hisobim" className="nav-link">
             Hisobim
+          </Link>
+        </li>
+        <li
+          className={menu === 'Buyurtmalar' ? 'active' : ''}
+          onClick={() => setMenu('Buyurtmalar')}
+        >
+          <Link to="/buyurtmalar" className="nav-link">
+            Buyurtmalar
           </Link>
         </li>
       </ul>

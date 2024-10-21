@@ -1,217 +1,209 @@
 .navbar {
-    display: flex;
-    justify-content: space-around;
-   
-    
+  display: flex;
+  justify-content: space-around;
 }
-.navbar::-webkit-scrollbar{
-    width: 2rem;
+.navbar::-webkit-scrollbar {
+  width: 2rem;
+}
+.menu-toggle {
+  margin-top: 900px;
 
+  position: absolute;
 }
-.menu-toggle{
-    margin-top: 900px;
-    
-   position: absolute;
-}
-.hr{
-    background-color: #70bf56;
-    margin-top: 40px;
-    padding-top: 8px;
-    width: 1450px;
-    margin-left: 110px;
-    border-radius: 2px;
-    box-shadow: #00e600;
+.hr {
+  background-color: #70bf56;
+  margin-top: 40px;
+  padding-top: 8px;
+  width: 1450px;
+  margin-left: 110px;
+  border-radius: 2px;
+  box-shadow: #00e600;
 }
 
 .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 40px;
 }
 
 .nav-logo img {
-    width: 100px;
-    margin-left: -680px; /* Sizga kerakli bo‘lsa, o‘zgartiring */
+  width: 100px;
+  margin-left: -680px; /* Sizga kerakli bo‘lsa, o‘zgartiring */
 }
 
 .savat {
-    margin-top: -10px;
+  margin-top: -10px;
 }
 
 .nav-logo p {
-    color: #000000;
-    font-size: 38px;
-    font-weight: 600;
+  color: #000000;
+  font-size: 38px;
+  font-weight: 600;
 }
 
 .nav_menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 50px;
-    margin-top: -75px;
-    margin-left: 800px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 50px;
+  margin-top: -75px;
+  margin-left: 800px;
 }
 
 .nav_menu li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 20px;
 }
 
 .nav_menu li.active {
-    background-color: #80ff80;
-    color: #000000;
-    font-weight: bold;
-    height: 20px;
-
+  background-color: #80ff80;
+  color: #000000;
+  font-weight: bold;
+  height: 20px;
 }
 
 .nav-link {
-    text-decoration: none; /* Havolani bezatish */
-    color: inherit; /* Ota elementdan rangi oladi */
-    font-size: inherit; /* Ota elementdan shrifti o‘lchamini oladi */
+  text-decoration: none; /* Havolani bezatish */
+  color: inherit; /* Ota elementdan rangi oladi */
+  font-size: inherit; /* Ota elementdan shrifti o‘lchamini oladi */
 }
 .menu-toggle {
-    display: none; /* Dastlab, menyu tugmasini yashirish */
+  display: none; /* Dastlab, menyu tugmasini yashirish */
 }
 .nav-cart-count {
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -55px;
-    position: relative;
-    margin-left: 75px;
-    border-radius: 11px;
-    font-size: 14px;
-    background-color: rgb(70, 100, 59);
-    color: white;
-    margin-top: -37px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -55px;
+  position: relative;
+  margin-left: 75px;
+  border-radius: 11px;
+  font-size: 14px;
+  background-color: rgb(70, 100, 59);
+  color: white;
+  margin-top: -37px;
 }
 
 @media (max-width: 1024px) {
-    .nav-logo img {
-        margin-left: -450px; /* O'zgartirish */
-        width: 80px; /* Agar kerak bo'lsa, o'lchamni o'zgartiring */
-    }
-   .nav-logo p{
+  .nav-logo img {
+    margin-left: -450px; /* O'zgartirish */
+    width: 80px; /* Agar kerak bo'lsa, o'lchamni o'zgartiring */
+  }
+  .nav-logo p {
     font-size: 30px;
-   }
+  }
 
-  .nav_menu{
+  .nav_menu {
     margin-left: 440px;
     margin-top: -60px;
     gap: 20px;
-
   }
-  .nav_menu li{
+  .nav_menu li {
     font-size: 15px;
   }
-  .hr{
+  .hr {
     width: 800px;
     margin-left: 100px;
   }
 }
 
-
 @media (max-width: 600px) {
-    .navbar {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items horizontally */
-    }
+  .navbar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+  }
 
-    .nav-logo {
-        margin-bottom: 0px; /* Logo va menyu o'rtasida bo'shliq */
-    }
+  .nav-logo {
+    margin-bottom: 0px; /* Logo va menyu o'rtasida bo'shliq */
+  }
 
-    .nav-logo img {
-        width: 70px; /* Logo o'lchamini o'zgartirish */
-        margin-left: -200px; /* Margini olib tashlash */
-        margin-top: 40px;
-    }
+  .nav-logo img {
+    width: 70px; /* Logo o'lchamini o'zgartirish */
+    margin-left: -200px; /* Margini olib tashlash */
+    margin-top: 40px;
+  }
 
-    .nav-logo p {
-        font-size: 18px; /* P yozuvini kichraytirish */
-        margin-top: 50px; /* Logo va matn o'rtasida bo'shliq */
-    }
+  .nav-logo p {
+    font-size: 18px; /* P yozuvini kichraytirish */
+    margin-top: 50px; /* Logo va matn o'rtasida bo'shliq */
+  }
 
-    .nav_menu {
-        display: none; /* Dastlab menyuni yashirish */
-        flex-direction: column; /* Menyu elementlarini ustun qilib joylashtirish */
-        gap: 10px; /* Menyu elementlari orasidagi bo'shliq */
-        margin-top: 60px; /* Menyu ustidan bo'shliq */
-        width: 450px; /* Menyu kengligini to'liq qilish */
-        border-radius: 10px; /* Burchaklarni yumshatish */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soyali effekt */
-        background-color: white; /* Oq fon */
-        padding: 10px; /* Ichki bo'shliq */
-        margin-left: 60px;
-    }
+  .nav_menu {
+    display: none; /* Dastlab menyuni yashirish */
+    flex-direction: column; /* Menyu elementlarini ustun qilib joylashtirish */
+    gap: 10px; /* Menyu elementlari orasidagi bo'shliq */
+    margin-top: 60px; /* Menyu ustidan bo'shliq */
+    width: 450px; /* Menyu kengligini to'liq qilish */
+    border-radius: 10px; /* Burchaklarni yumshatish */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soyali effekt */
+    background-color: white; /* Oq fon */
+    padding: 10px; /* Ichki bo'shliq */
+    margin-left: 60px;
+  }
 
-    .nav_menu.active {
-        display: flex; /* Active holatda menyuni ko'rsatish */
-    }
+  .nav_menu.active {
+    display: flex; /* Active holatda menyuni ko'rsatish */
+  }
 
-    .nav-menu li {
-        width: 100%; /* Har bir menyu elementi uchun to'liq kenglik */
-        text-align: center; /* Matnni markazga joylashtirish */
-        border-radius: 5px; /* Burchaklarni yumshatish */
-        transition: background-color 0.3s; /* Rang o'zgarishini yumshoq qilish */
-    }
+  .nav-menu li {
+    width: 100%; /* Har bir menyu elementi uchun to'liq kenglik */
+    text-align: center; /* Matnni markazga joylashtirish */
+    border-radius: 5px; /* Burchaklarni yumshatish */
+    transition: background-color 0.3s; /* Rang o'zgarishini yumshoq qilish */
+  }
 
-    .nav-menu li:hover {
-        background-color: #f0f0f0; /* Hover holatidagi fon rangi */
-    }
+  .nav-menu li:hover {
+    background-color: #f0f0f0; /* Hover holatidagi fon rangi */
+  }
 
-    .nav-cart-count {
-        margin-left: 130px; /* Savat hisobini markazga joylashtirish */
-        background-color: #00e600; /* To'g'ri rangni o'rnatish */
-        color: white; /* Matn rangini oq qilish */
-        border-radius: 50%; /* Oval shakl berish */
-        padding: 4px; /* Ichki bo'shliq */
-        z-index: 3;
-        
-    }
+  .nav-cart-count {
+    margin-left: 130px; /* Savat hisobini markazga joylashtirish */
+    background-color: #00e600; /* To'g'ri rangni o'rnatish */
+    color: white; /* Matn rangini oq qilish */
+    border-radius: 50%; /* Oval shakl berish */
+    padding: 4px; /* Ichki bo'shliq */
+    z-index: 3;
+  }
 
-    .hr {
-        width: 100%; /* Gorizontal chiziqning to'liq kengligi */
-        margin-left: 0; /* Gorizontal chiziqni markazga joylashtirish */
-    }
+  .hr {
+    width: 100%; /* Gorizontal chiziqning to'liq kengligi */
+    margin-left: 0; /* Gorizontal chiziqni markazga joylashtirish */
+  }
 
-    .menu-toggle {
-        cursor: pointer; /* Menyu tugmasi uchun ko'rsatkich */
-        font-size: 24px; /* Menyu tugmasi o'lchamini o'zgartirish */
-        margin-top: 30px; /* Tugma ustidan bo'shliq */
-        margin-left: 300px;
-        display: block; /* Kichik ekranlarda menyu tugmasini ko'rsatish */
-    }
+  .menu-toggle {
+    cursor: pointer; /* Menyu tugmasi uchun ko'rsatkich */
+    font-size: 24px; /* Menyu tugmasi o'lchamini o'zgartirish */
+    margin-top: 30px; /* Tugma ustidan bo'shliq */
+    margin-left: 300px;
+    display: block; /* Kichik ekranlarda menyu tugmasini ko'rsatish */
+  }
 
-    .hr {
-        width: 450px;
-        margin-left: 60px;
-    }
+  .hr {
+    width: 450px;
+    margin-left: 60px;
+  }
 }
 
 @media (max-width: 400px) {
-    .nav-logo{
-        margin-left: 100px;
-    }
-    .hr{
-        width: 300px;
-        margin-left: 45px;
-    }
-      .nav_menu{
-        width: 300px;
+  .nav-logo {
+    margin-left: 100px;
+  }
+  .hr {
+    width: 300px;
+    margin-left: 45px;
+  }
+  .nav_menu {
+    width: 300px;
 
-        margin-left: 33px;
-      }
-
+    margin-left: 33px;
+  }
 }

@@ -90,7 +90,13 @@ function Savatcha() {
       updateCart(id, 0)
     }
   }
-  console.log(cartItems)
+
+  const calculateTotalSum = (cart) => {
+    return cart.reduce((total, item) => {
+      return total + item.price * item.count
+    }, 0) // 0 is the initial value for the total sum
+  }
+
   return (
     <div className="savatcha-container">
       <h2>Savatcha</h2>
@@ -122,11 +128,19 @@ function Savatcha() {
       )}
 
       {cartItems.length === 0 ? (
-        <button onClick={() => navigate('/')}>Bosh sahifaga qaytish!</button>
+        <div className="">
+          <button onClick={() => navigate('/')}>Bosh sahifaga qaytish!</button>
+          <button onClick={() => navigate('/buyurtmalar')}>
+            Buyurtmalarni ko'rish!
+          </button>
+        </div>
       ) : (
-        <button onClick={handlePurchase} disabled={loading}>
-          {loading ? 'Yuborilmoqda...' : 'Sotib olish'}
-        </button>
+        <div className="div">
+          <h4>Jami summa: {calculateTotalSum(cartItems)} </h4>
+          <button onClick={handlePurchase} disabled={loading}>
+            {loading ? 'Yuborilmoqda...' : 'Sotib olish'}
+          </button>
+        </div>
       )}
     </div>
   )
