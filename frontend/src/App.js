@@ -24,8 +24,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/bosh-sahifa" element={<BoshSahifa />} />
+          <Route path="/" element={<BoshSahifa />} />
           <Route path="/savatcha" element={<Savatcha />} />
+          <Route path="/mahsulot-turlari" element={<Mahsulotlar />} />
+          <Route path="/hisobim" element={<Hisobim />} />
           <Route path="/product/:productid" element={<Product />} />
           <Route path="/loginsignup" element={<LoginSignup />} />
           <Route path="/chegirmalar" element={<Chegirmalar />} />
@@ -35,8 +37,6 @@ function App() {
           <Route path="/royhatdan-otish" element={<RoyhatdanOtish />} />
           <Route path="/sotib-olindi" element={<Sotibolindi />} />
           <Route path="/yetkazib-berish" element={<Yetkazibberish />} />
-          <Route path="/mahsulot-turlari" element={<Mahsulotlar />} />
-          <Route path="/hisobim" element={<Hisobim />} />
         </Routes>
       </BrowserRouter>
     </div>

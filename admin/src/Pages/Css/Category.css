@@ -1,0 +1,26 @@
+.category {
+  position: absolute;
+  top: 200px;
+  left: 350px;
+}
+
+.create-category {
+  margin-top: 20px;
+}
+
+.create-category input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.create-category button {
+  padding: 5px 10px;
+}
+
+ input {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

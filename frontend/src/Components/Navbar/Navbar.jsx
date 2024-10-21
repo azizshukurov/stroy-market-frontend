@@ -28,7 +28,7 @@ const Navbar = () => {
           className={menu === 'Bosh sahifa' ? 'active' : ''}
           onClick={() => setMenu('Bosh sahifa')}
         >
-          <Link to="/bosh-sahifa" className="nav-link">
+          <Link to="/" className="nav-link">
             Bosh sahifa
           </Link>
         </li>

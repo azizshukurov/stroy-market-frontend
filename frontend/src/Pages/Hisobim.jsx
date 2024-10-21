@@ -39,7 +39,7 @@ function Hisobim() {
         const registerData = await registerResponse.json()
         console.log(registerData)
         alert("Ro'yxatdan o'tish muvaffaqiyatli!")
-        window.location.href = '/bosh-sahifa'
+        window.location.href = '/'
         console.log(registerData.data)
         localStorage.setItem('userToken', registerData.data.token)
         localStorage.setItem('userId', registerData.data.data.id)
@@ -61,7 +61,7 @@ function Hisobim() {
         if (loginData.success) {
           // Successfully logged in, handle the token
           alert('Tizimga kirish muvaffaqiyatli!')
-          window.location.href = '/bosh-sahifa'
+          window.location.href = '/'
           localStorage.setItem('userToken', loginData.data.token) // Store token if login is successful
           localStorage.setItem('userId', loginData.data.data.id) // Store token if login is successful
         } else {

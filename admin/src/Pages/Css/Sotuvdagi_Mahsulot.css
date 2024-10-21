@@ -27,29 +27,27 @@
   font-family: cursive;
 }
 button {
-  width: 300px;
-  height: 55px;
+  padding: 10px 20px;
+  /* width: 300px; */
+  /* height: 55px; */
   background: #e5d544;
   border-radius: 200px;
   border: none;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-  "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   font-size: large;
-  
-
 }
 .buttonx {
   width: 300px;
   height: 55px;
   font-size: large;
   background: #ff7777;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   border-radius: 200px;
   border: none;
   margin: 10px;
   margin-left: 1px;
-
 }
 
 .border {
@@ -75,8 +73,8 @@ button {
   text-align: center;
   font-size: 20px;
   padding: 15px 10px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   margin-top: -10px;
 }
 
@@ -89,44 +87,41 @@ button {
   font-size: 15px;
   margin: 5px;
   margin-left: -0px;
-  
 }
 
 .h200 h2 {
   text-align: center;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   padding: 10px;
 }
 
-
-.btn1{
-    display: grid;
+.btn1 {
+  display: grid;
 }
 
-.saleproduct{
+.saleproduct {
   display: flex;
   gap: 150px;
   margin-top: 100px;
 }
 
-.imgone{
+.imgone {
   margin-top: -500px;
   position: absolute;
   margin-left: 240px;
-
 }
 
-.background2{
+.background2 {
   width: 300px;
   height: 50px;
   margin-top: -660px;
   margin-left: 670px;
   background-color: #f3f6f3;
-position: relative;
+  position: relative;
 }
 
-.background2 h2{
+.background2 h2 {
   position: relative;
   color: #149108;
   font-family: Inter;

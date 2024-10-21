@@ -84,7 +84,7 @@ function Mahsulotlar() {
         <div className="div101">
           {categories[activeIndex].products.map((product) => (
             <div key={product.id} className={`div13`}>
-              <h2>{product.name}</h2>
+              <h3>Nomi: {product.name}</h3>
               <p>Narxi: {product.price.toLocaleString()} so'm</p>
               <p>Qolgan: {product.count} ta</p>
 

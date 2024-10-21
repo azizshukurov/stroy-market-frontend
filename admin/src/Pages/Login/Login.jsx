@@ -69,6 +69,17 @@ function Login() {
               />
             </Link>
           </li>
+          <li className="r">
+            <Link
+              to="/category"
+              className={`link ${activeLink === '/category' ? 'active' : ''}`}
+            >
+              <img
+                src="https://static-00.iconduck.com/assets.00/user-alt-light-icon-256x256-kit5oi9x.png"
+                alt=""
+              />
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

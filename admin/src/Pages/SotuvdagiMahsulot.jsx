@@ -98,6 +98,7 @@ function SotuvdagiMahsulot() {
 
   const handleDelete = async (productId) => {
     try {
+      console.log(productId)
       const token = localStorage.getItem('userToken')
       await axios.delete(
         `https://qizildasturchi.uz/api/admin/products/${productId}`,

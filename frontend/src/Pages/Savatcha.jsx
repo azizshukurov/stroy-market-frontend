@@ -101,7 +101,11 @@ function Savatcha() {
           {cartItems.map((item) => (
             <li key={item.id} className="cart-item">
               <img
-                src={`https://qizildasturchi.uz/image${item.image}`}
+                src={
+                  item.image.startsWith('http')
+                    ? `${item.image}`
+                    : `https://qizildasturchi.uz/image${item.image}`
+                }
                 alt={item.name}
                 className="cart-item-image"
               />
@@ -118,9 +122,7 @@ function Savatcha() {
       )}
 
       {cartItems.length === 0 ? (
-        <button onClick={() => navigate('/bosh-sahifa')}>
-          Bosh sahifaga qaytish!
-        </button>
+        <button onClick={() => navigate('/')}>Bosh sahifaga qaytish!</button>
       ) : (
         <button onClick={handlePurchase} disabled={loading}>
           {loading ? 'Yuborilmoqda...' : 'Sotib olish'}

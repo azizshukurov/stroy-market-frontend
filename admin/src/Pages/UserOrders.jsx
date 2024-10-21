@@ -91,7 +91,7 @@ const UserOrders = () => {
   const getStatusText = (status) => {
     switch (status) {
       case 1:
-        return 'Yuborilgan'
+        return 'Yangi'
       case 2:
         return 'Qabul qilingan'
       case 3:
@@ -107,14 +107,15 @@ const UserOrders = () => {
 
   return (
     <div className="user-orders">
-      <h2>Mening Buyurtmalarim</h2>
+      <h2>Barcha Buyurtmalar</h2>
       {orders.length === 0 ? (
         <p>Buyurtmalaringiz yo'q.</p>
       ) : (
         <ul className="order-list">
           {orders.map((order) => (
             <li key={order.id} className="order-item">
-              <h3>Buyurtma ID: {order.id}</h3>
+              <h4>Ism familiya: {order.user?.full_name}</h4>
+              <h4>Telefon raqami: {order.user?.phone_number}</h4>
               <p>Umumiy summa: {order.total_sum} so'm</p>
               <p>Status: {getStatusText(order.status)}</p>
               <p>

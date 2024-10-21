@@ -1,95 +1,86 @@
-.div{
-    width: 90px;
-    height: 420px;
-    background: linear-gradient(180deg, #149108 0%, #D3FFCE 46.5%, #53DA46 100%);
-    margin-left: 150px;
-    margin-top: 150px;
-    border-radius: 100px;
-
+.div {
+  width: 90px;
+  height: 500px;
+  background: linear-gradient(180deg, #149108 0%, #d3ffce 46.5%, #53da46 100%);
+  margin-left: 150px;
+  margin-top: 150px;
+  border-radius: 100px;
 }
-.img{
-    width: 60px;
-    height: 60px;
-    background-color: aliceblue;
-    margin-left: 15px;
-    border-radius: 120px;
-    margin-top: 15px;
+.img {
+  width: 60px;
+  height: 60px;
+  background-color: aliceblue;
+  margin-left: 15px;
+  border-radius: 120px;
+  margin-top: 15px;
 }
-.images{
-    margin-top: 25px;
+.images {
+  margin-top: 25px;
 }
-.login2{
-    width: 650px;
-    height: 500px;
-    border: 10px solid rgb(6, 193, 6);
-    margin-left: 510px;
-    margin-top: -440px;
-    border-radius: 50px;
-    background-color: rgb(238, 244, 250);
-  
-
-
+.login2 {
+  width: 650px;
+  height: 500px;
+  border: 10px solid rgb(6, 193, 6);
+  margin-left: 510px;
+  margin-top: -440px;
+  border-radius: 50px;
+  background-color: rgb(238, 244, 250);
 }
 .login2 .input {
-    border-radius: 20px;
-    border: 2px solid #f6f6f6;
-    margin-left: 105px;
-    margin-top: 20px;
-    width: 350px;
-    height: 50px;
-    text-align: center;
-    margin-left: 140px;
-
-    
+  border-radius: 20px;
+  border: 2px solid #f6f6f6;
+  margin-left: 105px;
+  margin-top: 20px;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  margin-left: 140px;
 }
-.input::placeholder{
+.input::placeholder {
   font-size: 20px;
   text-align: center;
 }
 
+.btn .button1 {
+  margin-top: 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 350px;
+  height: 50px;
+  margin-left: 110px;
+  font-size: 20px;
+  font-family: monospace;
+  background: #a5fe9d;
 
-.btn .button1{
-    margin-top: 20px;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 350px;
-    height: 50px;
-    margin-left: 110px;  
-    font-size: 20px;
-    font-family: monospace;
-    background: #A5FE9D;
-
-    margin-top: 20px;
-    margin-left: 140px;
+  margin-top: 20px;
+  margin-left: 140px;
 }
 
-.btn .button2{
-    margin-top: 20px;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 350px;
-    height: 50px;
-    margin-left: 110px;  
-    font-size: 20px;
-    font-family: monospace;
-    background: #F59898;
+.btn .button2 {
+  margin-top: 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 350px;
+  height: 50px;
+  margin-left: 110px;
+  font-size: 20px;
+  font-family: monospace;
+  background: #f59898;
 
-    margin-left: 140px;
-
+  margin-left: 140px;
 }
 
-.inp{
-    margin-top: 90px;
+.inp {
+  margin-top: 90px;
 }
 
-.container_ul .r img{
-    width: 50px;
-    height: 50px;
-    margin-top: 23px;
-    margin-left: -20px;
-    
+.container_ul .r img {
+  width: 50px;
+  height: 50px;
+  margin-top: 23px;
+  margin-left: -20px;
 }
 
-.container_ul .r{
-    list-style-type: none;
+.container_ul .r {
+  list-style-type: none;
 }
