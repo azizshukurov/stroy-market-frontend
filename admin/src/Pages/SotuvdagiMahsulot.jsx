@@ -153,13 +153,6 @@ function SotuvdagiMahsulot() {
               <div className="h100">
                 <h2>{product.count} ta bor</h2>
               </div>
-              <div className="h101">
-                <h2>
-                  {product.sold > 0
-                    ? `${product.sold} ta sotilgan`
-                    : 'hali sotilmagan'}
-                </h2>
-              </div>
 
               <div className="btn1">
                 <button onClick={() => handleEdit(product)}>Tahrirlash</button>
