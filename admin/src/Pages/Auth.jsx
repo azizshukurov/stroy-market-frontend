@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import axios from 'axios' // Import axios for HTTP requests
+import { Form, Button, Alert } from 'react-bootstrap'
+import axios from 'axios'
+import './Css/Login.css'
 
-function Auth() {
-  const [phoneNumber, setPhoneNumber] = useState('') // State for phone number
-  const [code, setCode] = useState('') // State for code
-  const [error, setError] = useState('') // State for errors
+import BackgroundImage from '../assets/background.png'
 
-  // Handle form submission
-  const handleLogin = async () => {
+const Login = () => {
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [code, setCode] = useState('')
+  const [show, setShow] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setLoading(true)
+    setError('')
     try {
       const response = await axios.post(
         'https://qizildasturchi.uz/api/admin/login',
@@ -18,46 +26,69 @@ function Auth() {
       )
 
       if (response.status === 200) {
-        const { token } = response.data.data // Assuming the backend returns a token
-        localStorage.setItem('userToken', token) // Save the token to localStorage
-        window.location.href = '/link2' // Redirect to another route after login
+        const { token } = response.data.data
+        localStorage.setItem('userToken', token)
+        window.location.href = '/link2'
       }
     } catch (error) {
-      // Handle error response
       setError('Admin topilmadi yoki login va parol xato kiritildi.')
+      setShow(true)
     }
+    setLoading(false)
   }
 
   return (
-    <div className="Auth">
-      <div className="bottom">
-        <div className="login2">
-          <div className="inp">
-            <input
-              className="input"
-              type="text"
-              placeholder="901112233"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)} // Update phone number state
-            />
-            <input
-              className="input"
-              type="password"
-              placeholder="Kod kiriting"
-              value={code}
-              onChange={(e) => setCode(e.target.value)} // Update code state
-            />
-          </div>
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          <div className="btn">
-            <button className="button1" onClick={handleLogin}>
-              Kirish
-            </button>
-          </div>
-        </div>
-      </div>
+    <div
+      className="sign-in__wrapper"
+      style={{ backgroundImage: `url(${BackgroundImage})` }}
+    >
+      {/* Overlay */}
+      <div className="sign-in__backdrop"></div>
+      {/* Form */}
+      <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+        <div className="h4 mb-2 text-center">Login</div>
+        {/* Alert */}
+        {show && (
+          <Alert
+            className="mb-2"
+            variant="danger"
+            onClose={() => setShow(false)}
+            dismissible
+          >
+            {error}
+          </Alert>
+        )}
+        <Form.Group className="mb-2" controlId="phoneNumber">
+          <Form.Label>Telefo raqam</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="901112233"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-2" controlId="code">
+          <Form.Label>Kod</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Kod kiriting"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Button
+          className="w-100"
+          variant="primary"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? 'Logging In...' : 'Log In'}
+        </Button>
+      </Form>
     </div>
   )
 }
 
-export default Auth
+export default Login

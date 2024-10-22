@@ -1,25 +1,60 @@
-import { useNavigate } from 'react-router-dom' // Import useNavigate
-import './Admin.css'
-import logopng from '../rasm/Frame 146.png'
+import { Link } from 'react-router-dom' // If you are using react-router
 
-function Admin() {
-  const navigate = useNavigate() // Initialize navigate
-
-  const handleImageClick = () => {
-    navigate(-1) // Navigate to the previous page
-  }
-
+function Navbar() {
   return (
-    <div>
-      <div className="top">
-        <div className="img" onClick={handleImageClick}>
-          <img src={logopng} alt="Logo" />
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          Admin panel
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/link1">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/link2">
+                Admin
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/link3">
+                Mahsulot
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/link4">
+                Sotuvdagi Mahsulot
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/category">
+                Kategoriya
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/link5">
+                Buyurtmalar
+              </Link>
+            </li>
+          </ul>
         </div>
-        <h2 className="h2">Boshqaruv</h2>
       </div>
-      <div className="hr"></div>
-    </div>
+    </nav>
   )
 }
 
-export default Admin
+export default Navbar

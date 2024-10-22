@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Css/UserOrders.css' // Create a CSS file for styling
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const UserOrders = () => {
   const [orders, setOrders] = useState([])
@@ -38,7 +38,6 @@ const UserOrders = () => {
 
   const updateOrderStatus = async () => {
     if (!selectedOrder) return
-    console.log(selectedOrder)
     try {
       const response = await fetch(
         `https://qizildasturchi.uz/api/admin/orders/status/${selectedOrder}`,
@@ -49,7 +48,7 @@ const UserOrders = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            status: 3,
+            status: selectedStatus,
           }),
         }
       )
@@ -106,54 +105,93 @@ const UserOrders = () => {
   }
 
   return (
-    <div className="user-orders">
-      <h2>Barcha Buyurtmalar</h2>
+    <div className="container mt-4">
+      <h2 className="text-center">Barcha Buyurtmalar</h2>
       {orders.length === 0 ? (
-        <p>Buyurtmalaringiz yo'q.</p>
+        <p className="text-center">Buyurtmalaringiz yo'q.</p>
       ) : (
-        <ul className="order-list">
+        <div className="row">
           {orders.map((order) => (
-            <li key={order.id} className="order-item">
-              <h4>Ism familiya: {order.user?.full_name}</h4>
-              <h4>Telefon raqami: {order.user?.phone_number}</h4>
-              <p>Umumiy summa: {order.total_sum} so'm</p>
-              <p>Status: {getStatusText(order.status)}</p>
-              <p>
-                To'lov holati:{' '}
-                {order.payment_status === 0 ? "To'langan" : "To'lanmagan"}
-              </p>
-              <p>Yaratilgan: {new Date(order.created_at).toLocaleString()}</p>
-              <h4>Mahsulotlar:</h4>
-              <ul>
-                {order.products.map((product) => (
-                  <li key={product.id}>
-                    {product.product.name} - {product.count} dona
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => openModal(order.id, order.status)}>
-                statusni o'zgartirish
-              </button>
-            </li>
+            <div key={order.id} className="col-md-6 mb-4">
+              <div className="card">
+                <div className="card-body">
+                  <h4 className="card-title">
+                    Ism familiya: {order.user?.full_name}
+                  </h4>
+                  <h5 className="card-subtitle mb-2">
+                    Telefon raqami: {order.user?.phone_number}
+                  </h5>
+                  <p className="card-text">
+                    Umumiy summa: {order.total_sum} so'm
+                  </p>
+                  <p>Status: {getStatusText(order.status)}</p>
+                  <p>
+                    To'lov holati:{' '}
+                    {order.payment_status === 0 ? "To'langan" : "To'lanmagan"}
+                  </p>
+                  <p>
+                    Yaratilgan: {new Date(order.created_at).toLocaleString()}
+                  </p>
+                  <h5>Mahsulotlar:</h5>
+                  <ul className="list-group mb-3">
+                    {order.products.map((product) => (
+                      <li key={product.id} className="list-group-item">
+                        {product.product.name} - {product.count} dona
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => openModal(order.id, order.status)}
+                  >
+                    Statusni o'zgartirish
+                  </button>
+                </div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
+
+      {/* Modal */}
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Statusni tanlang</h3>
-            <select
-              value={selectedStatus}
-              onChange={(e) => setSelectedStatus(parseInt(e.target.value))}
-            >
-              <option value={1}>Yuborilgan</option>
-              <option value={2}>Qabul qilingan</option>
-              <option value={3}>Yetqazib berilgan</option>
-              <option value={4}>To'lov qilingan</option>
-              <option value={0}>Bekor qilingan</option>
-            </select>
-            <button onClick={updateOrderStatus}>O'zgartirish</button>
-            <button onClick={closeModal}>Yopish</button>
+        <div
+          className="modal fade show"
+          style={{ display: 'block' }}
+          tabIndex="-1"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Statusni tanlang</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeModal}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <select
+                  className="form-select"
+                  value={selectedStatus}
+                  onChange={(e) => setSelectedStatus(parseInt(e.target.value))}
+                >
+                  <option value={1}>Yuborilgan</option>
+                  <option value={2}>Qabul qilingan</option>
+                  <option value={3}>Yetqazib berilgan</option>
+                  <option value={4}>To'lov qilingan</option>
+                  <option value={0}>Bekor qilingan</option>
+                </select>
+              </div>
+              <div className="modal-footer">
+                <button className="btn btn-primary" onClick={updateOrderStatus}>
+                  O'zgartirish
+                </button>
+                <button className="btn btn-secondary" onClick={closeModal}>
+                  Yopish
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

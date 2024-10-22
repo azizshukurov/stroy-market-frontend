@@ -1,0 +1,42 @@
+.sign-in__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.sign-in__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sign-in__wrapper form {
+  width: 100%; /* Full width on smaller screens */
+  max-width: 24rem; /* Limit max width for larger screens */
+  z-index: 1;
+  padding: 1rem; /* Add padding for better spacing */
+  margin: 1rem; /* Add margin for spacing on smaller screens */
+}
+
+.sign-in__wrapper form img {
+  width: 4rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .sign-in__wrapper {
+    padding: 1rem; /* Add padding on small screens */
+  }
+
+  .sign-in__wrapper form {
+    width: 90%; /* Adjust width for smaller screens */
+    margin: 0 auto; /* Center the form */
+  }
+}

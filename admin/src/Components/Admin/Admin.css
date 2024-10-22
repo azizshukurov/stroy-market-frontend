@@ -1,39 +1,55 @@
+.admin-container {
+  padding: 0 20px; /* Add padding for small screens */
+}
+
 .top {
-    display: flex;
+  display: flex;
+  align-items: center; /* Center align items vertically */
+  justify-content: space-between; /* Add space between items */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
-.top img{
-  margin-top: 20px;
 
+.h2 {
+  text-align: center;
+  margin: 20px auto; /* Center align with auto margins */
+  color: #149108;
+  font-family: Inter, sans-serif; /* Added fallback font */
+  font-size: 24px; /* Adjust font size for better readability */
+  font-weight: 400;
+  line-height: 1.2; /* Adjust line height */
+  flex: 1; /* Allow the h2 to grow and take available space */
 }
-.h2{
-    text-align: center;
-    margin-left: 690px;
-    margin-top: 50px;
-    color: rgb(9, 163, 9);
-    font-family: Inter;
-    font-size: 27px;
-    font-weight: 400;
-    line-height: 24.2px;
-    text-align: left;
-    color: #149108;
-}
-.hr{
-  width: 1450px;
+
+.hr {
+  width: 100%; /* Full width for better responsiveness */
   height: 7px;
-  
   background-color: rgb(9, 163, 9);
-  margin-left: 120px;
-
+  margin: 20px 0; /* Margin for spacing */
 }
-.div200{
-    width: Fixed (96px)px;
-height: Fixed (42px)px;
-top: 29px;
-left: 61px;
-padding: 21px 32px 21px 32px;
-gap: 10px;
-border-radius: 100px 0px 0px 0px;
-opacity: 0px;
-background: #149108;
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .top {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center align items */
+  }
+
+  .h2 {
+    margin: 10px 0; /* Reduce margin on smaller screens */
+    font-size: 20px; /* Smaller font size */
+  }
+
+  .top img {
+    width: 40px; /* Smaller logo on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .h2 {
+    font-size: 18px; /* Further reduce font size */
+  }
+
+  .top img {
+    width: 30px; /* Further reduce logo size */
+  }
 }

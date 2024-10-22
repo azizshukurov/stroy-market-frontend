@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Css/Category.css'
+import { Button, Modal } from 'react-bootstrap'
 
 const Category = () => {
   const token = localStorage.getItem('userToken')
@@ -8,9 +9,9 @@ const Category = () => {
   const [categories, setCategories] = useState([])
   const [editingCategory, setEditingCategory] = useState(null)
   const [newCategoryName, setNewCategoryName] = useState('')
-  const [newCategoryInput, setNewCategoryInput] = useState('') // State for new category input
-  const [newCategoryImage, setNewCategoryImage] = useState(null) // State for new category image
-  const [imageFile, setImageFile] = useState(null) // Store the image file for upload
+  const [newCategoryInput, setNewCategoryInput] = useState('')
+  const [newCategoryImage, setNewCategoryImage] = useState(null)
+  const [imageFile, setImageFile] = useState(null)
 
   useEffect(() => {
     fetchCategories()
@@ -42,7 +43,6 @@ const Category = () => {
           },
         }
       )
-      setCategories(categories.filter((category) => category.id !== categoryId))
     } catch (error) {
       console.error('Error deleting category:', error)
     }
@@ -50,12 +50,12 @@ const Category = () => {
 
   const updateCategory = async () => {
     try {
-      const imageUrl = await uploadImage(imageFile) // Upload the new image file
+      const imageUrl = await uploadImage(imageFile)
       await axios.put(
         `https://qizildasturchi.uz/api/admin/category/${editingCategory.id}`,
         {
           name: newCategoryName,
-          image: imageUrl, // Include the uploaded image URL
+          image: imageUrl.data,
         },
         {
           headers: {
@@ -70,21 +70,21 @@ const Category = () => {
             : category
         )
       )
-      setEditingCategory(null) // Close edit modal
+      setEditingCategory(null)
     } catch (error) {
       console.error('Error updating category:', error)
     }
   }
 
   const uploadImage = async (file) => {
-    if (!file) return null // If no image is selected, return null
+    if (!file) return null
 
     const formData = new FormData()
     formData.append('file', file)
 
     try {
       const response = await axios.post(
-        'https://qizildasturchi.uz/api/upload', // Replace with your image upload endpoint
+        'https://qizildasturchi.uz/api/upload',
         formData,
         {
           headers: {
@@ -93,8 +93,6 @@ const Category = () => {
           },
         }
       )
-
-      setImageFile(response.data)
       return response.data
     } catch (error) {
       console.error('Error uploading image:', error)
@@ -108,17 +106,16 @@ const Category = () => {
       console.log(imageUrl)
       const response = await axios.post(
         'https://qizildasturchi.uz/api/admin/category',
-        { name: newCategoryInput, image: imageUrl.data },
+        { name: newCategoryInput, image: imageUrl?.data },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       )
-
-      console.log(response.data)
-
+      setCategories([...categories, response.data])
       setNewCategoryInput('')
+      setImageFile(null)
     } catch (error) {
       console.error('Error creating category:', error)
     }
@@ -128,11 +125,11 @@ const Category = () => {
     <div className="category">
       <h1>Mahsulot turlari</h1>
 
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Nomi</th>
-            <th>Rasmi</th> {/* Add a column to display image */}
+            <th>Rasmi</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -144,16 +141,20 @@ const Category = () => {
                 <img
                   src={`https://qizildasturchi.uz/image/${category.image}`}
                   alt={category.name}
-                  width="50"
-                  height="50"
+                  className="category-image"
                 />
-              </td>{' '}
-              {/* Display category image */}
+              </td>
               <td>
-                <button onClick={() => setEditingCategory(category)}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => setEditingCategory(category)}
+                >
                   O'zgartirish
                 </button>
-                <button onClick={() => deleteCategory(category.id)}>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteCategory(category.id)}
+                >
                   O'chirish
                 </button>
               </td>
@@ -169,39 +170,58 @@ const Category = () => {
           value={newCategoryInput}
           onChange={(e) => setNewCategoryInput(e.target.value)}
           placeholder="Mahsulot turini nomini yozing"
+          className="form-control"
         />
         <input
           type="file"
           accept="image/*"
-          onChange={(e) => setImageFile(e.target.files[0])} // Save the selected image file
+          onChange={(e) => setImageFile(e.target.files[0])}
+          className="form-control mt-2"
         />
-        <button onClick={createCategory}>Yaratish</button>
+        <button className="btn btn-success mt-3" onClick={createCategory}>
+          Yaratish
+        </button>
       </div>
 
       {editingCategory && (
-        <>
-          <div className="modal-overlay"></div>
-          <div className="modal">
-            <div className="header">
-              <h2>Edit Category</h2>
+        <div
+          className="modal show"
+          style={{ display: 'block', position: 'fixed', zIndex: 1050 }}
+        >
+          <Modal.Dialog>
+            <Modal.Header>
+              <Modal.Title>Categoryni tahrirlash</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
               <input
                 type="text"
                 value={newCategoryName}
                 onChange={(e) => setNewCategoryName(e.target.value)}
                 placeholder={editingCategory.name}
+                className="form-control"
               />
               <input
                 type="file"
                 accept="image/*"
-                onChange={(e) => setImageFile(e.target.files[0])} // Save the selected image file
+                onChange={(e) => setImageFile(e.target.files[0])}
+                className="form-control mt-2"
               />
-            </div>
-            <div className="btn">
-              <button onClick={updateCategory}>Qo'shish</button>
-              <button onClick={() => setEditingCategory(null)}>Chiqish</button>
-            </div>
-          </div>
-        </>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => setEditingCategory(null)}
+              >
+                Bekor qilish
+              </Button>
+              <Button variant="primary" onClick={updateCategory}>
+                Saqlash
+              </Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </div>
       )}
     </div>
   )

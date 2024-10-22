@@ -3,7 +3,6 @@
   height: 500px;
   background: linear-gradient(180deg, #149108 0%, #d3ffce 46.5%, #53da46 100%);
   margin-left: 150px;
-  margin-top: 150px;
   border-radius: 100px;
 }
 .img {
@@ -22,7 +21,7 @@
   height: 500px;
   border: 10px solid rgb(6, 193, 6);
   margin-left: 510px;
-  margin-top: -440px;
+  /* margin-top: -440px; */
   border-radius: 50px;
   background-color: rgb(238, 244, 250);
 }

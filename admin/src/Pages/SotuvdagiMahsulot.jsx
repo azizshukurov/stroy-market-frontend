@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import './Css/Sotuvdagi_Mahsulot.css'
-import log from '../assets/Chat_alt_add_fill.png'
+import { Modal, Button, Card, Row, Col, Spinner, Alert } from 'react-bootstrap'
 
 function SotuvdagiMahsulot() {
   const [products, setProducts] = useState([]) // Store products
@@ -12,13 +11,11 @@ function SotuvdagiMahsulot() {
   const [orderData, setOrderData] = useState(null)
 
   useEffect(() => {
-    // Fetch all products when the component mounts
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
           'https://qizildasturchi.uz/api/products'
         )
-        console.log(response.data.data.records)
         setProducts(response.data.data.records) // Set the fetched products
         setLoading(false)
       } catch (error) {
@@ -43,7 +40,7 @@ function SotuvdagiMahsulot() {
         )
         const result = await response.json()
         if (result.success) {
-          setOrderData(result.data.records) // Assuming you want to display the first order
+          setOrderData(result.data.records)
         }
       } catch (error) {
         console.error('Error fetching order data:', error)
@@ -54,13 +51,13 @@ function SotuvdagiMahsulot() {
   }, [])
 
   const handleEdit = (product) => {
-    setSelectedProduct(product) // Set the selected product for editing
-    setIsModalOpen(true) // Open the modal
+    setSelectedProduct(product)
+    setIsModalOpen(true)
   }
 
   const closeModal = () => {
-    setIsModalOpen(false) // Close the modal
-    setSelectedProduct(null) // Clear the selected product
+    setIsModalOpen(false)
+    setSelectedProduct(null)
   }
 
   const handleSave = async () => {
@@ -71,8 +68,6 @@ function SotuvdagiMahsulot() {
       price: parseInt(selectedProduct.price),
       count: parseInt(selectedProduct.count),
     }
-
-    console.log(updatedProductData)
 
     try {
       const token = localStorage.getItem('userToken')
@@ -87,7 +82,6 @@ function SotuvdagiMahsulot() {
       )
       alert('Product updated successfully')
       setIsModalOpen(false)
-      // Refetch the products to see the updated list
       const response = await axios.get('https://qizildasturchi.uz/api/products')
       setProducts(response.data.data.records)
     } catch (error) {
@@ -98,7 +92,6 @@ function SotuvdagiMahsulot() {
 
   const handleDelete = async (productId) => {
     try {
-      console.log(productId)
       const token = localStorage.getItem('userToken')
       await axios.delete(
         `https://qizildasturchi.uz/api/admin/products/${productId}`,
@@ -109,7 +102,6 @@ function SotuvdagiMahsulot() {
         }
       )
       alert('Product deleted successfully')
-
       const response = await axios.get('https://qizildasturchi.uz/api/products')
       setProducts(response.data.data.records)
     } catch (error) {
@@ -119,159 +111,124 @@ function SotuvdagiMahsulot() {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" />
+      </div>
+    )
   }
 
   if (error) {
-    return <div>{error}</div>
+    return <Alert variant="danger">{error}</Alert>
   }
 
   return (
-    <div className="productlist">
-      <div className="background2">
-        <h2>Sotuvdagi mahsulotlar</h2>
-      </div>
-
-      <div className="saleproduct">
+    <div className="container mt-4">
+      <h2>Sotuvdagi mahsulotlar</h2>
+      <Row className="mt-4">
         {products.map((product) => (
-          <div className="info" key={product.id}>
-            <div className="border">
-              <img
+          <Col md={4} sm={6} key={product.id} className="mb-4">
+            <Card>
+              <Card.Img
+                variant="top"
                 src={product.image}
-                alt=""
-                style={{ width: '280px', height: '300px' }}
+                style={{ height: '300px' }}
               />
-            </div>
-            <div className="input">
-              <div className="h200">
-                <h2>{product.name}</h2>
-              </div>
-
-              <div className="h100">
-                <h2>Narxi {product.price} so'm</h2>
-              </div>
-              <div className="h100">
-                <h2>Hozir {product.count} ta bor</h2>
-              </div>
-
-              <div className="btn1">
-                <button onClick={() => handleEdit(product)}>Tahrirlash</button>
-                <button
-                  className="buttonx"
+              <Card.Body>
+                <Card.Title>{product.name}</Card.Title>
+                <Card.Text>
+                  <strong>Narxi:</strong> {product.price} so'm
+                  <br />
+                  <strong>Hozir:</strong> {product.count} ta bor
+                </Card.Text>
+                <Button variant="primary" onClick={() => handleEdit(product)}>
+                  Tahrirlash
+                </Button>
+                <Button
+                  variant="danger"
+                  className="ms-2"
                   onClick={() => handleDelete(product.id)}
                 >
                   Olib tashlash
-                </button>
-              </div>
-              <img className="imgone" src={log} alt="" />
-            </div>
-          </div>
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
 
-      {isModalOpen && selectedProduct && (
-        <div style={styles.modal}>
-          <div style={styles.modalContent}>
-            <span style={styles.close} onClick={closeModal}>
-              &times;
-            </span>
-            <h2>Mahsulotni tahrirlash</h2>
-            <div style={styles.inputGroup}>
-              <label>Name:</label>
-              <input
-                type="text"
-                value={selectedProduct.name}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    name: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div style={styles.inputGroup}>
-              <label>Price:</label>
-              <input
-                type="number"
-                value={selectedProduct.price}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    price: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div style={styles.inputGroup}>
-              <label>Count:</label>
-              <input
-                type="number"
-                value={selectedProduct.count}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    count: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <button style={styles.saveButton} onClick={handleSave}>
-              Saqlash
-            </button>
-            <button style={styles.cancelButton} onClick={closeModal}>
-              Bekor qilish
-            </button>
-          </div>
+      {isModalOpen && (
+        <div
+          className="modal show"
+          style={{ display: 'block', position: 'fixed', zIndex: 1050 }}
+        >
+          <Modal.Dialog>
+            <Modal.Header>
+              <Modal.Title>Mahsulotni tahrirlash</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              {selectedProduct && (
+                <>
+                  <div className="mb-3">
+                    <label>Name:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={selectedProduct.name}
+                      onChange={(e) =>
+                        setSelectedProduct({
+                          ...selectedProduct,
+                          name: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label>Price:</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      value={selectedProduct.price}
+                      onChange={(e) =>
+                        setSelectedProduct({
+                          ...selectedProduct,
+                          price: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label>Count:</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      value={selectedProduct.count}
+                      onChange={(e) =>
+                        setSelectedProduct({
+                          ...selectedProduct,
+                          count: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </>
+              )}
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={closeModal}>
+                Bekor qilish
+              </Button>
+              <Button variant="primary" onClick={handleSave}>
+                Saqlash
+              </Button>
+            </Modal.Footer>
+          </Modal.Dialog>
         </div>
       )}
     </div>
   )
-}
-
-const styles = {
-  modal: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'fixed',
-    zIndex: 1,
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '10px',
-    width: '400px',
-    textAlign: 'center',
-  },
-  close: {
-    fontSize: '24px',
-    cursor: 'pointer',
-    float: 'right',
-  },
-  inputGroup: {
-    margin: '10px 0',
-  },
-  saveButton: {
-    backgroundColor: 'green',
-    color: '#fff',
-    padding: '10px',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
-  cancelButton: {
-    backgroundColor: 'red',
-    color: '#fff',
-    padding: '10px',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
 }
 
 export default SotuvdagiMahsulot
