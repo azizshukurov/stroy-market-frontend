@@ -8,7 +8,6 @@ const productTemplate = {
 
 function MahsulotQoshish() {
   const [displayedProducts, setDisplayedProducts] = useState([productTemplate]) // Initial product
-  const [position, setPosition] = useState(0) // Rasm pozitsiyasi
   const [productData, setProductData] = useState({
     name: '',
     category_id: '',

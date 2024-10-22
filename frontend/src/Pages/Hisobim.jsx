@@ -80,7 +80,7 @@ function Hisobim() {
 
   return (
     <div className="hisobim">
-      <h2 className="h2R">Royhatdan Otish</h2>
+      <h2 className="h2R">Royhatdan O'tish</h2>
       <div className="login10">
         <div className="input10">
           <input

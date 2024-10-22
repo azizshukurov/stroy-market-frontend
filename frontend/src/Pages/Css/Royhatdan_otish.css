@@ -1,136 +1,126 @@
-.login{
-    width: 650px;
-    height: 500px;
-    border: 10px solid rgb(6, 193, 6);
-    margin-left: 800px;
-    margin-top: -420px;
-    border-radius: 50px;
-    background-color: rgb(238, 244, 250);
-    
+.login {
+  width: 650px;
+  height: 500px;
+  border: 10px solid rgb(6, 193, 6);
+  margin-left: 800px;
+  margin-top: -420px;
+  border-radius: 50px;
+  background-color: rgb(238, 244, 250);
 }
 .login .input {
-    border-radius: 20px;
-    border: 2px solid #f6f6f6;
-    margin-left: 105px;
-    margin-top: 20px;
-    width: 350px;
-    height: 50px;
-    text-align: center;
+  border-radius: 20px;
+  border: 2px solid #f6f6f6;
+  margin-left: 105px;
+  margin-top: 20px;
+  width: 350px;
+  height: 50px;
+  text-align: center;
 }
-.input::placeholder{
+.input::placeholder {
   font-size: 20px;
   text-align: center;
 }
 
-.btn .button1{
-    margin-top: 20px;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 350px;
-    height: 50px;
-    margin-left: 110px;  
-    font-size: 20px;
-    font-family: monospace;
-    background-color: rgb(96, 225, 126)
+.btn .button1 {
+  margin-top: 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 350px;
+  height: 50px;
+  /* margin-left: 110px; */
+  font-size: 20px;
+  font-family: monospace;
+  background-color: rgb(96, 225, 126);
 }
 
-.btn .button2{
-    margin-top: 20px;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 350px;
-    height: 50px;
-    margin-left: 110px;  
-    font-size: 20px;
-    font-family: monospace;
-    background-color: rgb(230, 79, 56)
+.btn .button2 {
+  margin-top: 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 350px;
+  height: 50px;
+  margin-left: 110px;
+  font-size: 20px;
+  font-family: monospace;
+  background-color: rgb(230, 79, 56);
 }
 
-.login2{
-    margin-left: 40px;
-    margin-top: 55px;
+.login2 {
+  margin-left: 40px;
+  margin-top: 55px;
 }
 
 @media (max-width: 1024px) {
-    .container_ul{
-        margin-left: -100px;
-             
-    }
-    .r{
-        font-size: 12px;
-        width: 120px;
-    }
-    .login{
-        margin-left: 400px;
-        width: 500px;
-
-    }
-    .login2{
-        margin-left: -25px;
-        margin-top: 80px;
-    }
-
+  .container_ul {
+    margin-left: -100px;
   }
-  
+  .r {
+    font-size: 12px;
+    width: 120px;
+  }
+  .login {
+    margin-left: 400px;
+    width: 500px;
+  }
+  .login2 {
+    margin-left: -25px;
+    margin-top: 80px;
+  }
+}
 
-  @media (max-width: 600px) {
-   .container_ul{
+@media (max-width: 600px) {
+  .container_ul {
     margin-top: 50px;
     margin-left: -170px;
-    
-
-   }
-  .r{
+  }
+  .r {
     margin-top: -30px;
     width: 400px;
-    
   }
-  .login{
+  .login {
     margin-top: 100px;
     margin-left: 30px;
   }
-  .btn{
-    margin-left: 80px;
-
+  .btn {
+    /* margin-left: 80px; */
   }
 }
 
 @media (max-width: 400px) {
- .container_ul{
+  .container_ul {
     width: 10px;
- }
- .r{
+  }
+  .r {
     width: 240px;
     margin-left: 150px;
- }
- .login{
+  }
+  .login {
     width: 300px;
     height: 300px;
- }
- .login2{
+  }
+  .login2 {
     margin-left: -100px;
     margin-top: 10px;
- }
- .login2 .input{
-      width: 200px;
-      margin-left: 150px;
-      margin-top: 10px;
- }
- .input::placeholder{
+  }
+  .login2 .input {
+    width: 200px;
+    margin-left: 150px;
+    margin-top: 10px;
+  }
+  .input::placeholder {
     font-size: 14px;
- }
-  .login2 .btn .button1{
+  }
+  .login2 .btn .button1 {
     width: 200px;
     margin-left: 150px;
     margin-top: 10px;
   }
-  .login2 .btn .button2{
+  .login2 .btn .button2 {
     width: 200px;
     margin-left: 150px;
     margin-top: 10px;
   }
-  .login2 .btn{
+  .login2 .btn {
     margin-left: 3px;
   }
-  
 }

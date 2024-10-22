@@ -53,7 +53,7 @@ function Savatcha() {
         localStorage.removeItem('cart')
         setCartItems([])
         alert('Sotib olish muvaffaqiyatli amalga oshirildi!')
-        navigate('/orders')
+        navigate('/buyurtmalar')
       } else {
         alert(result.message || 'Sotib olishda xato yuz berdi!')
       }
@@ -99,9 +99,8 @@ function Savatcha() {
 
   return (
     <div className="savatcha-container">
-      <h2>Savatcha</h2>
       {cartItems.length === 0 ? (
-        <p>Savatchangiz bo'sh.</p>
+        <h1>Savatchangiz bo'sh.</h1>
       ) : (
         <ul className="cart-list">
           {cartItems.map((item) => (
@@ -128,7 +127,7 @@ function Savatcha() {
       )}
 
       {cartItems.length === 0 ? (
-        <div className="">
+        <div className="savat-buttonlar">
           <button onClick={() => navigate('/')}>Bosh sahifaga qaytish!</button>
           <button onClick={() => navigate('/buyurtmalar')}>
             Buyurtmalarni ko'rish!
@@ -136,7 +135,7 @@ function Savatcha() {
         </div>
       ) : (
         <div className="div">
-          <h4>Jami summa: {calculateTotalSum(cartItems)} </h4>
+          <h4>Jami summa: {calculateTotalSum(cartItems)} so'm </h4>
           <button onClick={handlePurchase} disabled={loading}>
             {loading ? 'Yuborilmoqda...' : 'Sotib olish'}
           </button>

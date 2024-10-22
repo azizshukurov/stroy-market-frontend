@@ -9,6 +9,8 @@ const Category = () => {
   const [editingCategory, setEditingCategory] = useState(null)
   const [newCategoryName, setNewCategoryName] = useState('')
   const [newCategoryInput, setNewCategoryInput] = useState('') // State for new category input
+  const [newCategoryImage, setNewCategoryImage] = useState(null) // State for new category image
+  const [imageFile, setImageFile] = useState(null) // Store the image file for upload
 
   useEffect(() => {
     fetchCategories()
@@ -36,7 +38,7 @@ const Category = () => {
         `https://qizildasturchi.uz/api/admin/category/${categoryId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Add token in headers for deletion
+            Authorization: `Bearer ${token}`,
           },
         }
       )
@@ -48,19 +50,23 @@ const Category = () => {
 
   const updateCategory = async () => {
     try {
+      const imageUrl = await uploadImage(imageFile) // Upload the new image file
       await axios.put(
         `https://qizildasturchi.uz/api/admin/category/${editingCategory.id}`,
-        { name: newCategoryName },
+        {
+          name: newCategoryName,
+          image: imageUrl, // Include the uploaded image URL
+        },
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Add token in headers for update
+            Authorization: `Bearer ${token}`,
           },
         }
       )
       setCategories(
         categories.data?.map((category) =>
           category.id === editingCategory.id
-            ? { ...category, name: newCategoryName }
+            ? { ...category, name: newCategoryName, image: imageUrl }
             : category
         )
       )
@@ -70,18 +76,49 @@ const Category = () => {
     }
   }
 
-  const createCategory = async () => {
+  const uploadImage = async (file) => {
+    if (!file) return null // If no image is selected, return null
+
+    const formData = new FormData()
+    formData.append('file', file)
+
     try {
       const response = await axios.post(
-        'https://qizildasturchi.uz/api/admin/category',
-        { name: newCategoryInput },
+        'https://qizildasturchi.uz/api/upload', // Replace with your image upload endpoint
+        formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Add token in headers for creation
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
           },
         }
       )
-      setNewCategoryInput('') // Clear the input field
+
+      setImageFile(response.data)
+      return response.data
+    } catch (error) {
+      console.error('Error uploading image:', error)
+      return null
+    }
+  }
+
+  const createCategory = async () => {
+    try {
+      const imageUrl = await uploadImage(imageFile)
+      console.log(imageUrl)
+      const response = await axios.post(
+        'https://qizildasturchi.uz/api/admin/category',
+        { name: newCategoryInput, image: imageUrl.data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      console.log(response.data)
+
+      setNewCategoryInput('')
     } catch (error) {
       console.error('Error creating category:', error)
     }
@@ -89,13 +126,13 @@ const Category = () => {
 
   return (
     <div className="category">
-      <h1>Categories</h1>
+      <h1>Mahsulot turlari</h1>
 
-      {/* Table to display categories */}
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Nomi</th>
+            <th>Rasmi</th> {/* Add a column to display image */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -104,11 +141,20 @@ const Category = () => {
             <tr key={category.id}>
               <td>{category.name}</td>
               <td>
+                <img
+                  src={`https://qizildasturchi.uz/image/${category.image}`}
+                  alt={category.name}
+                  width="50"
+                  height="50"
+                />
+              </td>{' '}
+              {/* Display category image */}
+              <td>
                 <button onClick={() => setEditingCategory(category)}>
-                  Edit
+                  O'zgartirish
                 </button>
                 <button onClick={() => deleteCategory(category.id)}>
-                  Delete
+                  O'chirish
                 </button>
               </td>
             </tr>
@@ -116,16 +162,20 @@ const Category = () => {
         </tbody>
       </table>
 
-      {/* Create New Category Section */}
       <div className="create-category">
-        <h2>Create New Category</h2>
+        <h2>Yangi Mahsulot turini yaratish</h2>
         <input
           type="text"
           value={newCategoryInput}
           onChange={(e) => setNewCategoryInput(e.target.value)}
-          placeholder="Enter new category name"
+          placeholder="Mahsulot turini nomini yozing"
         />
-        <button onClick={createCategory}>Create</button>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImageFile(e.target.files[0])} // Save the selected image file
+        />
+        <button onClick={createCategory}>Yaratish</button>
       </div>
 
       {editingCategory && (
@@ -140,10 +190,15 @@ const Category = () => {
                 onChange={(e) => setNewCategoryName(e.target.value)}
                 placeholder={editingCategory.name}
               />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setImageFile(e.target.files[0])} // Save the selected image file
+              />
             </div>
             <div className="btn">
-              <button onClick={updateCategory}>Save</button>
-              <button onClick={() => setEditingCategory(null)}>Cancel</button>
+              <button onClick={updateCategory}>Qo'shish</button>
+              <button onClick={() => setEditingCategory(null)}>Chiqish</button>
             </div>
           </div>
         </>

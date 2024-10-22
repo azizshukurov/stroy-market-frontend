@@ -148,10 +148,10 @@ function SotuvdagiMahsulot() {
               </div>
 
               <div className="h100">
-                <h2>{product.price} so'm</h2>
+                <h2>Narxi {product.price} so'm</h2>
               </div>
               <div className="h100">
-                <h2>{product.count} ta bor</h2>
+                <h2>Hozir {product.count} ta bor</h2>
               </div>
 
               <div className="btn1">

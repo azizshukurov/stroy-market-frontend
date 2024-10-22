@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
+
 import axios from 'axios'
 import './Css/Buyurtmalar.css'
+import { useNavigate } from 'react-router-dom'
 
 const Buyurtmalar = () => {
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
-  const [products, setProducts] = useState([])
   const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
   // Fetching orders with authorization token
   useEffect(() => {
@@ -18,8 +20,10 @@ const Buyurtmalar = () => {
         const token = localStorage.getItem('userToken')
 
         // If token is not found, throw error
+        if (token) navigate('/buyurtmalar')
         if (!token) {
           setError('Authorization token not found.')
+          navigate('/hisobim')
           setLoading(false)
           return
         }
@@ -48,35 +52,6 @@ const Buyurtmalar = () => {
     fetchOrders()
   }, [])
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const token = localStorage.getItem('userToken')
-        orders.data?.map((order) =>
-          order.products?.map(async (product) => {
-            const response = await axios.get(
-              `https://qizildasturchi.uz/api/products/${product.product_id}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            )
-
-            setProducts(response.data)
-          })
-        )
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchCategories()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   if (loading) {
     return <div>Loading...</div>
   }
@@ -101,7 +76,9 @@ const Buyurtmalar = () => {
         return "Noma'lum"
     }
   }
-  console.log(products)
+
+  // console.log(orders)
+
   return (
     <div className="buyurtmalar-page">
       <h1>Sizning barcha buyurtmalaringiz</h1>
@@ -125,19 +102,28 @@ const Buyurtmalar = () => {
                 <span>Umumiy summa: {order.total_sum} so'm</span>
 
                 <div className="order-products">
-                  <h4>Products:</h4>
-                  {order.products.map((product) => (
-                    <div key={product.id} className="product-item">
+                  <h3>Mahsulotlar:</h3>
+                  {order.products.map((item) => (
+                    <div key={item.id} className="product-item">
                       <div>
-                        <span>Nomi: {products.data?.name}</span>
+                        <span>Nomi: {item.product.name}</span>
                       </div>
                       <div>
-                        <span>Miqdor: {product.count} ta</span>
+                        <span>Miqdor: {item.count} ta</span>
                       </div>
                       <div>
-                        <span>Jami summa: {products.data?.price} so'm</span>
+                        <span>
+                          Jami summa: {item.product.price * item.count} so'm
+                        </span>
                       </div>
-                      <img src={products.data?.image} alt="" className="" />
+                      <img
+                        src={
+                          `https://qizildasturchi.uz/image${item.product.image}` ||
+                          'placeholder.jpg'
+                        }
+                        alt={item.product.name}
+                        className=""
+                      />
                     </div>
                   ))}
                 </div>

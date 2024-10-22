@@ -1,119 +1,126 @@
-
-.login10{
-    width: 650px;
-    height: 500px;
-    border: 10px solid rgb(6, 193, 6);
-    border-radius: 50px;
-    background-color: rgb(238, 244, 250);
-    margin-left: 515px;
-    margin-top: 50px;
-    background: linear-gradient(180deg, rgba(20, 145, 8, 0.16) 0%, rgba(165, 254, 157, 0.16) 42.5%, rgba(83, 218, 70, 0.16) 100%);
-
+.hisobim {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login10 {
+  width: 650px;
+  height: 500px;
+  border: 10px solid rgb(6, 193, 6);
+  border-radius: 50px;
+  background-color: rgb(238, 244, 250);
+  /* margin-left: 515px; */
+  margin-top: 50px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 145, 8, 0.16) 0%,
+    rgba(165, 254, 157, 0.16) 42.5%,
+    rgba(83, 218, 70, 0.16) 100%
+  );
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 .login10 .input {
-    border-radius: 20px;
-    border: 2px solid #f6f6f6;
-    margin-left: 140px;
-    margin-top: 20px;
-    width: 350px;
-    height: 50px;
-    text-align: center;
-
-
+  border-radius: 20px;
+  border: 2px solid #f6f6f6;
+  /* margin-left: 140px; */
+  margin-top: 20px;
+  width: 350px;
+  height: 50px;
+  text-align: center;
 }
-.login10 .btn{
-    /* margin-top: 70px; */
-    margin-left: 30px;
+.login10 .btn {
+  /* margin-top: 70px; */
+  /* margin-left: 30px; */
 }
-.input10{
-    margin-top: 80px;
+.input10 {
+  margin-top: 80px;
 }
-.h2R{
-    text-align: center;
+.h2R {
+  text-align: center;
+  margin-top: 20px;
 }
-.h3{
-    background-color: #70bf56;
-    margin-top: 40px;
-    padding-top: 8px;
-    width: 1450px;
-    margin-left: 110px;
-    border-radius: 2px;
-    box-shadow: #00e600;
-    margin-top: 80px;
-    margin-bottom: 80px;
+.h3 {
+  background-color: #70bf56;
+  margin-top: 40px;
+  padding-top: 8px;
+  /* width: 1450px; */
+  /* margin-left: 110px; */
+  max-width: 1440px;
+  width: 90%;
+  border-radius: 2px;
+  box-shadow: #00e600;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 1024px) {
-  .h2R{
+  .h2R {
     font-size: 20px;
   }
-  .login10{
-    margin-left: 170px;
+  .login10 {
+    /* margin-left: 170px; */
   }
-    
-  .h3{
-    width: 800px;
+
+  .h3 {
+    /* width: 800px; */
   }
 }
 
-
 @media (max-width: 1024px) {
-  .login10{
+  .login10 {
     width: 460px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     height: 400px;
   }
-  .input10{
-    margin-left: -40px;
+  .input10 {
+    /* margin-left: -40px; */
     margin-top: 40px;
-
   }
-  .input10 .input{
+  .input10 .input {
     width: 250px;
     border-radius: 40px;
-
   }
-  .input10 .input::placeholder{
+  .input10 .input::placeholder {
     font-size: 14px;
-
   }
- .btn{
-  padding-left: -90px;
-  z-index: 5;
+  .btn {
+    padding-left: -90px;
+    z-index: 5;
+  }
+  .btn .button1 {
+    /* margin-left: 70px; */
+    width: 255px;
+  }
 
-  position: absolute;
- }
- .btn .button1{
-   margin-left: 70px;
-   width: 255px;
-
- }
- 
- .btn .button2{
-  margin-left: 70px;
-  width: 255px;
-
-}
-.h3{
-  width: 450px;
-  margin-left: 60px;
-}
+  .btn .button2 {
+    margin-left: 70px;
+    width: 255px;
+  }
+  .h3 {
+    /* width: 450px;
+    margin-left: 60px; */
+  }
 }
 
 @media (max-width: 1024px) {
-
-  .login10{
+  .login10 {
     width: 330px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
   }
-  .input10{
-    margin-left: -100px;
+  .input10 {
+    /* margin-left: -100px; */
   }
-  .hisobim .btn{
-    margin-left: -28px;
+  .hisobim .btn {
+    /* margin-left: -28px; */
   }
-  .h3{
-    width: 300px;
-    margin-left: 40px;
+  .h3 {
+    /* width: 300px; */
+    /* margin-left: 40px; */
   }
 }

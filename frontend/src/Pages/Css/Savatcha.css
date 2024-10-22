@@ -10,11 +10,26 @@
   margin-bottom: 80px;
 }
 
+h1 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .savatcha-container {
-  max-width: 800px;
+  max-width: 1440px;
+  width: 90%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 10px;
   font-family: Arial, sans-serif;
+}
+.savat-buttonlar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+.savat-buttonlar button {
+  margin-left: 0;
 }
 
 /* h2 {
@@ -92,5 +107,8 @@ button + button {
   button {
     font-size: 1rem;
     padding: 10px;
+  }
+  .savat-buttonlar button {
+    width: 100%;
   }
 }
