@@ -89,37 +89,45 @@ const Buyurtmalar = () => {
           <h1>Sizda hozircha buyurtmalar mavjud emas</h1>
         ) : (
           orders.data?.map((order) => (
-            <div className="box">
-              <h1>Sizning barcha buyurtmalaringiz</h1>
-              <div key={order.id} className="order-card">
-                <div className="order-details">
-                  <span>Buyurtma holati: {getStatusText(order.status)}</span>
-                  <span>
-                    To'lov holati:{' '}
-                    {order.payment_status === 1 ? "To'lanmagan" : "To'langan"}
-                  </span>
-                  <span>
-                    Buyurtma qilingan vaqt:{' '}
-                    {new Date(order.created_at).toLocaleDateString()}
-                  </span>
-                  <span>Umumiy summa: {order.total_sum} so'm</span>
+            <div key={order.id} className="order-card">
+              <div className="order-details">
+                <span>Buyurtma holati: {getStatusText(order.status)}</span>
+                <span>
+                  To'lov holati:{' '}
+                  {order.payment_status === 1 ? "To'lanmagan" : "To'langan"}
+                </span>
 
-                  <div className="order-products">
-                    <h3>Mahsulotlar:</h3>
-                    {order.products.map((item) => (
-                      <div key={item.id} className="product-item">
-                        <div>
-                          <span>Nomi: {item.product.name}</span>
-                        </div>
-                        <div>
-                          <span>Miqdor: {item.count} ta</span>
-                        </div>
-                        <div>
-                          <span>Narxi: {item.price} so'm</span>
-                        </div>
+                <span>
+                  Buyurtma qilingan vaqt:{' '}
+                  {new Date(order.created_at).toLocaleDateString()}
+                </span>
+                <span>Umumiy summa: {order.total_sum} so'm</span>
+
+                <div className="order-products">
+                  <h3>Mahsulotlar:</h3>
+                  {order.products.map((item) => (
+                    <div key={item.id} className="product-item">
+                      <div>
+                        <span>Nomi: {item.product.name}</span>
                       </div>
-                    ))}
-                  </div>
+                      <div>
+                        <span>Miqdor: {item.count} ta</span>
+                      </div>
+                      <div>
+                        <span>
+                          Jami summa: {item.product.price * item.count} so'm
+                        </span>
+                      </div>
+                      <img
+                        src={
+                          `https://qizildasturchi.uz/image${item.product.image}` ||
+                          'placeholder.jpg'
+                        }
+                        alt={item.product.name}
+                        className=""
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
