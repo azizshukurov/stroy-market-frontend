@@ -8,7 +8,6 @@ function Savatcha() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Retrieve the user token and userId from localStorage or session
     const userToken = localStorage.getItem('userToken')
     const userId = localStorage.getItem('userId')
 
@@ -48,7 +47,11 @@ function Savatcha() {
       })
 
       const result = await response.json()
-      if (result.success) {
+      if (response.status === 401) {
+        // If the token is expired or unauthorized, redirect to '/hisobim'
+        alert('Token muddati tugagan. Iltimos, qayta kiring.')
+        navigate('/hisobim')
+      } else if (result.success) {
         // If the order is successful, clear the cart and redirect to the orders page
         localStorage.removeItem('cart')
         setCartItems([])
