@@ -49,8 +49,8 @@ function Login() {
           </li>
           <li className="r">
             <Link
-              to="/link4"
-              className={`link ${activeLink === '/link4' ? 'active' : ''}`}
+              to="/"
+              className={`link ${activeLink === '/' ? 'active' : ''}`}
             >
               <img
                 src="https://static-00.iconduck.com/assets.00/user-alt-light-icon-256x256-kit5oi9x.png"

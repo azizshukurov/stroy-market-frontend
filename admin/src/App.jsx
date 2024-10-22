@@ -23,7 +23,7 @@ function App() {
             <Route path="/link1" element={<Auth />} />
             <Route path="/link2" element={<AddAdmin />} />
             <Route path="/link3" element={<MahsulotQoshish />} />
-            <Route path="/link4" element={<SotuvdagiMahsulot />} />
+            <Route path="/" element={<SotuvdagiMahsulot />} />
             <Route path="/link5" element={<UserOrders />} />
             <Route path="/category" element={<Category />} />
           </>

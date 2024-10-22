@@ -36,7 +36,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/link4">
+              <Link className="nav-link" to="/">
                 Sotuvdagi Mahsulot
               </Link>
             </li>
