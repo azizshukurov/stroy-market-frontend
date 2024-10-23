@@ -155,14 +155,16 @@
 
   .nav-logo {
     margin-bottom: 0px; /* Logo va menyu o'rtasida bo'shliq */
+    margin-top: -60px;
   }
   .menu-toggle {
     cursor: pointer; /* Menyu tugmasi uchun ko'rsatkich */
     font-size: 24px; /* Menyu tugmasi o'lchamini o'zgartirish */
-    margin-top: 30px; /* Tugma ustidan bo'shliq */
+    margin-top: -30px; /* Tugma ustidan bo'shliq */
     /* margin-left: 300px; */
     margin-left: -40px;
     display: block; /* Kichik ekranlarda menyu tugmasini ko'rsatish */
+    z-index: 100;
   }
   .nav-logo img {
     width: 70px; /* Logo o'lchamini o'zgartirish */
@@ -179,7 +181,7 @@
     display: none; /* Dastlab menyuni yashirish */
     flex-direction: column; /* Menyu elementlarini ustun qilib joylashtirish */
     gap: 10px; /* Menyu elementlari orasidagi bo'shliq */
-    margin-top: 160px; /* Menyu ustidan bo'shliq */
+    margin-top: 130px; /* Menyu ustidan bo'shliq */
     width: 450px; /* Menyu kengligini to'liq qilish */
     border-radius: 10px; /* Burchaklarni yumshatish */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soyali effekt */
@@ -187,7 +189,8 @@
     padding: 10px; /* Ichki bo'shliq */
     /* margin-left: 60px; */
     position: absolute;
-    right: 10px;
+    /* right: 10px; */
+    left: 0;
     width: 200px;
   }
 

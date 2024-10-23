@@ -16,6 +16,7 @@ import Yetkazibberish from "./Pages/Yetkazib_Berish";
 import Mahsulotlar from "./Pages/Mahsulotlar";
 import Hisobim from "./Pages/Hisobim";
 import Buyurtmalar from "./Pages/Buyurtmalar";
+import Profile from "./Pages/Profile";
 
 console.log(process.env.URL);
 
@@ -28,7 +29,13 @@ function App() {
           <Route path="/" element={<BoshSahifa />} />
           <Route path="/savatcha" element={<Savatcha />} />
           <Route path="/mahsulot-turlari" element={<Mahsulotlar />} />
-          <Route path="/hisobim" element={<Hisobim />} />
+          {/* <Route path="/hisobim" element={<Hisobim />} /> */}
+          <Route
+            path="/hisobim"
+            element={
+              localStorage.getItem("userToken") ? <Profile /> : <Hisobim />
+            }
+          />
           <Route path="/buyurtmalar" element={<Buyurtmalar />} />
           {/* <Route path="/product/:productid" element={<Product />} />
           <Route path="/loginsignup" element={<LoginSignup />} />

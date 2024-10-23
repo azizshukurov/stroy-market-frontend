@@ -14,6 +14,10 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.absolute-text {
+  font-size: 22px;
+  margin-top: 200px;
+}
 .hr5 {
   max-width: 1440px;
   width: 90%;
@@ -279,9 +283,7 @@
   .mahsulotlar {
     /* display: grid; */
   }
-  .mahsulot-wrapper aside {
-    width: 150px;
-  }
+
   .div10 {
     /* margin-left: 20px; */
     width: 100%;
